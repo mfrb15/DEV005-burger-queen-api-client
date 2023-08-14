@@ -4,18 +4,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CookComponent } from './componets/cook/cook.component';
-import { WaiterComponent } from './componets/waiter/waiter.component';
+import { CookComponent } from './components/cook/cook.component';
+import { WaiterComponent } from './components/waiter/waiter.component';
+import { AdminComponent } from './components/admin/admin.component';
+
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     CookComponent,
-    WaiterComponent
+    WaiterComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
