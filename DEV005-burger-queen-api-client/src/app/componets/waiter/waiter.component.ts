@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-orders',
+  selector: 'app-waiter',
   templateUrl: './waiter.component.html',
   styleUrls: ['./waiter.component.css']
 })
