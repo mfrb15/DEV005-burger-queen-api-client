@@ -9,13 +9,15 @@ import { WaiterComponent } from './components/waiter/waiter.component';
 import { AdminComponent } from './components/admin/admin.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CookComponent,
     WaiterComponent,
-    AdminComponent
+    AdminComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
