@@ -1,0 +1,50 @@
+@media (min-width: 768px) and (max-width: 1024px) {
+
+.inputForm{
+  border-radius: 20px;
+border: 1px solid #000;
+background: #FFFCFB;
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+width: 747px;
+height: 85px;
+flex-shrink: 0;
+font-size: 30px;
+margin-bottom: 50px;
+}
+.labelForm{
+  color: #FF9700;
+  font-family: Alatsi;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 459px;
+height: 51px;
+flex-shrink: 0;
+}
+.contenedor{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+.button{
+  width: 411.839px;
+height: 70.736px;
+flex-shrink: 0;
+border-radius: 31.438px;
+background: #FF9700;
+font-family: Alatsi;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  color: #FFFCFB;
+}
+.contenedorInput{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 20px;
+}
+}
