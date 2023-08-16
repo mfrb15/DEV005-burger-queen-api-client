@@ -1,8 +1,14 @@
-.logoBurgerQueen{
-  display: flex;
-}
 
-/* img {
+/* .logoBurgerQueen {
+  display: flex;
+} */
+
+.logo-small {
   width: 150px;
   height: 150px;
-} */
+}
+
+.logo-large {
+  width: 324px;
+  height: 324px;
+}
