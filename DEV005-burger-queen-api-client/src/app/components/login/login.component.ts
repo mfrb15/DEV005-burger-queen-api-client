@@ -17,4 +17,4 @@ export class LoginComponent {
   onLogin(form: any) {
     console.log(form);
   }
- }
+}

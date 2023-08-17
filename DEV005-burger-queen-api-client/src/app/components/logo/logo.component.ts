@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./logo.component.css']
 })
 export class LogoComponent {
-  @Input() size = "small";
+  @Input() size = '';
 }
 

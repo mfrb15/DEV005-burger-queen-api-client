@@ -1,24 +1,22 @@
-  <!-- <img src="/DEV005-burger-queen-api-client/src/images/logoBurgerQueen.png" alt="logoBurgerQueen"> -->
-
+<div class="container">
   <app-logo [size]="'large'"></app-logo>
-
+</div>
 
 <button routerLink="/cook-component" routerLinkActive="active">Cocina</button>
 <button routerLink="/waiter-component" routerLinkActive="active"> Mesero </button>
 <button routerLink="/admin-component" routerLinkActive="active"> Administrador </button>
 
 <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
-  <div class="contenedorInput">
-  <label for="nombre" class="labelForm">Correo</label>
-  <input type="email" id="email" class="inputForm" formControlName="user" required placeholder="correo@example.com">
+  <div class="inputContainer">
+    <label for="email" class="labelForm">Correo</label>
+    <input type="email" id="email" class="inputForm" formControlName="user" required placeholder="correo@example.com">
 
-  <label for="password" class="labelForm">Contraseña</label>
-  <input type="password" id="password" class="inputForm" formControlName="password" required
-    placeholder="Ingrese su contraseña">
+    <label for="password" class="labelForm">Contraseña</label>
+    <input type="password" id="password" class="inputForm" formControlName="password" required
+      placeholder="Ingrese su contraseña">
   </div>
-  <div class="contenedor">
-    <button routerLink="/waiter-component" class="button" routerLinkActive="active" type="submit">Iniciar
-      Sesión</button>
+  <div class="container">
+    <button class="button" routerLinkActive="active" type="submit">Iniciar Sesión</button>
   </div>
 
 </form>
