@@ -10,20 +10,24 @@ import { AdminComponent } from './components/admin/admin.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { LogoComponent } from './components/logo/logo.component';
 @NgModule({
   declarations: [
     AppComponent,
     CookComponent,
     WaiterComponent,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    LogoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

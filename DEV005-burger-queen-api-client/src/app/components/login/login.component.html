@@ -1,15 +1,22 @@
-<p>login works!</p>
+<div class="container">
+  <app-logo [size]="'large'"></app-logo>
+</div>
 
 <button routerLink="/cook-component" routerLinkActive="active">Cocina</button>
 <button routerLink="/waiter-component" routerLinkActive="active"> Mesero </button>
 <button routerLink="/admin-component" routerLinkActive="active"> Administrador </button>
 
 <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
-  <label for="nombre">Correo</label>
-  <input type="email" id="email" formControlName="user" required>
+  <div class="inputContainer">
+    <label for="email" class="labelForm">Correo</label>
+    <input type="email" id="email" class="inputForm" formControlName="user" required placeholder="correo@example.com">
 
-  <label for="password">Contraseña</label>
-  <input type="password" id="password" formControlName="password" required>
+    <label for="password" class="labelForm">Contraseña</label>
+    <input type="password" id="password" class="inputForm" formControlName="password" required
+      placeholder="Ingrese su contraseña">
+  </div>
+  <div class="container">
+    <button class="button" routerLinkActive="active" type="submit">Iniciar Sesión</button>
+  </div>
 
-  <button routerLink="/waiter-component" routerLinkActive="active" type="submit">Iniciar Sesión</button>
 </form>
