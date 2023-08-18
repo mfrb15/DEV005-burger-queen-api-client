@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServicesService {
-  url: string = "http://localhost:8080/";
-  constructor(private http: HttpClient) { }
+  // url: string = "http://localhost:8080/";
+  // constructor(private http: HttpClient) { }
 
-  loginByEmail(form: LoginI): Observable<ResponseI> {
+  // loginByEmail(form: LoginI): Observable<ResponseI> {
 
-    return direccion = this.url +
-  }
+  //   //return direccion = this.url +
+  // }
 }
