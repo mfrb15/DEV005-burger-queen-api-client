@@ -16,10 +16,12 @@ export class LoginComponent {
     password: new FormControl('', Validators.required)
   })
 
-  constructor(private api: ServicesService) {}
+  constructor(private api: ServicesService) { }
 
   onLogin(form: LoginI) {
     this.api.loginByEmail(form).subscribe((data) => {
+      this.api.token = data.accessToken
+      console.log(this.api.token);
       console.log(data);
     })
     console.log(form);
