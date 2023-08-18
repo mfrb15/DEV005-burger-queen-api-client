@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ServicesService } from 'src/app/services/services.service';
+import { LoginI } from 'src/app/models/login.interface';
 
 
 @Component({
@@ -10,11 +12,16 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class LoginComponent {
 
   loginForm: FormGroup = new FormGroup({
-    user: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   })
 
-  onLogin(form: any) {
+  constructor(private api: ServicesService) {}
+
+  onLogin(form: LoginI) {
+    this.api.loginByEmail(form).subscribe((data) => {
+      console.log(data);
+    })
     console.log(form);
   }
 }
