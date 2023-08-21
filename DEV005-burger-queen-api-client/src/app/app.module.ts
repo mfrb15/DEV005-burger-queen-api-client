@@ -12,6 +12,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LogoComponent } from './components/logo/logo.component';
+import { RoleGuardGuard } from './guards/role-guard.guard';
 @NgModule({
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -32,7 +33,7 @@ import { LogoComponent } from './components/logo/logo.component';
     HttpClientModule,
 
   ],
-  providers: [],
+  providers: [RoleGuardGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -10,6 +10,8 @@ import { map } from 'rxjs/operators';
 export class ServicesService {
   private apiUrl = 'http://127.0.0.1:8080/';
   token = '';
+  user = '';
+  role = '';
   constructor(private http: HttpClient) { }
 
   // los otros métodos que tendríamos que tener aquí son:
