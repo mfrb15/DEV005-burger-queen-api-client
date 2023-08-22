@@ -12,7 +12,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LogoComponent } from './components/logo/logo.component';
-import { RoleGuardGuard } from './guards/role-guard.guard';
+import {  AuthGuard } from './guards/auth.guard';
+import { WaiterGuard } from './guards/waiter.guard';
+import { CookGuard } from './guards/cook.guard';
+import { AdminGuard } from './guards/admin.guard';
 @NgModule({
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -33,7 +36,7 @@ import { RoleGuardGuard } from './guards/role-guard.guard';
     HttpClientModule,
 
   ],
-  providers: [RoleGuardGuard],
+  providers: [ AuthGuard, WaiterGuard, CookGuard, AdminGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
