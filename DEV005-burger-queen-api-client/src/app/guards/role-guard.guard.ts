@@ -12,8 +12,14 @@ export class RoleGuardGuard implements CanActivate {
 
 canActivate(): boolean{
   const accessToken = this.authService.getToken();
-  if(accessToken){
+  const userRole = this.authService.getRole();
+
+  if(accessToken && userRole === 'admin'){
     return true;
+  } else if (accessToken && userRole === 'cook') {
+    return true
+  } else if (accessToken && userRole == 'waiter') {
+    return true
   } else {
     this.router.navigate(['']);
     return false;
