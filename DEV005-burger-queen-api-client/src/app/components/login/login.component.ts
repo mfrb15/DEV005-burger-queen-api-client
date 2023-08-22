@@ -42,6 +42,10 @@ export class LoginComponent {
         this.router.navigate(['cook-component']);
       }
 
+    }, (error) => {
+      if(error.error === 'Cannot find user' || error.error === 'Incorrect password') {
+        console.log('Credenciales incorrectas');
+      }
     })
     console.log(credentials);
 
