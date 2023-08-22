@@ -26,15 +26,14 @@ export class LoginComponent {
     //Suscribe indica qué se hace una vez que la respuesta es correcta
     this.auth.loginByEmail(credentials).subscribe((response) => {
 
-      this.auth.token = response.accessToken
-      console.log(this.auth.token);
-      this.auth.user = response.user.email
-      this.auth.role = response.user.role
+      this.auth.token = response.accessToken;
+      this.auth.id = response.user.id.toString();
+      this.auth.role = response.user.role;
+
       localStorage.setItem('accesToken', this.auth.token);
       localStorage.setItem('role', this.auth.role);
-      localStorage.setItem('user', this.auth.user);
-      // Este console solo nos mostrará la data en caso de ser correcta la petición
-      console.log(this.auth.user, this.auth.role);
+      localStorage.setItem('id', this.auth.id.toString());
+
       if (this.auth.role === 'admin'){
         this.router.navigate(['admin-component']);
       } else if(this.auth.role === 'waiter') {

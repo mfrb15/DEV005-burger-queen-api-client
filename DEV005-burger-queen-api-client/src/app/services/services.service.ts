@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class ServicesService {
   private apiUrl = 'http://127.0.0.1:8080/';
   token = '';
-  user = '';
+  id = '';
   role = '';
   constructor(private http: HttpClient) { }
 
@@ -41,6 +41,6 @@ export class ServicesService {
     );
   }
 
-  // aqui iria la función obtener productos.
+  // aqui iría la función obtener productos.
 
 }
