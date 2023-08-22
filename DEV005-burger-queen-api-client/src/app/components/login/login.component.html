@@ -10,12 +10,12 @@
   <div class="inputContainer">
     <label for="email" class="labelForm">Correo</label>
     <input type="email" id="email" class="inputForm" formControlName="email" required placeholder="correo@example.com">
-    <div class="requiredCamp" *ngIf="loginForm.get('email')?.invalid && formSubmitted"> El correo es requerido </div>
+    <div class="requiredCamp" *ngIf="showPasswordMessage()"> El correo es requerido </div>
 
     <label for="password" class="labelForm">Contraseña</label>
     <input type="password" id="password" class="inputForm" formControlName="password" required
       placeholder="Ingrese su contraseña">
-      <div class="requiredCamp" *ngIf="loginForm.get('password')?.invalid && formSubmitted"> La contraseña es requerida </div>
+    <div class="requiredCamp" *ngIf="showPasswordMessage()"> La contraseña es requerida </div>
 
   </div>
   <div class="container">

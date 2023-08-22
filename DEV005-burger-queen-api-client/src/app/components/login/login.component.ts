@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ServicesService } from 'src/app/services/services.service';
-import { Credentials } from 'src/app/models/login.interface';
+
 import { Router } from '@angular/router';
-
-
+import { Credentials } from 'src/app/models/login.interface';
 
 @Component({
   selector: 'app-login',
@@ -21,34 +20,38 @@ export class LoginComponent {
 
   constructor(private auth: ServicesService, private router: Router) { }
 
+  // crear aquí función para redirigir
+  redirectByRole(role: string) {
+    if (role === 'admin'){
+      this.router.navigate(['admin-component']);
+    } else if(role === 'waiter') {
+      this.router.navigate(['waiter-component']);
+    } else if(role === 'cook') {
+      this.router.navigate(['cook-component']);
+    }
+  }
+
+  showPasswordMessage() {
+    const password = this.loginForm.get('password');
+    const conditionToShowMessage = password?.invalid && this.formSubmitted;
+    return conditionToShowMessage;
+  }
+
   onLogin(credentials: Credentials) {
-    this.formSubmitted
+    this.formSubmitted = true;
     //Suscribe indica qué se hace una vez que la respuesta es correcta
-    this.auth.loginByEmail(credentials).subscribe((response) => {
+    this.auth.loginByEmail(credentials)
+    .subscribe((response) => {
+      if (typeof response === 'string') {
+        console.log('Las credenciales son incorrectas');
+      } else {
+        console.log(response);
+        localStorage.setItem('accesToken', response.accessToken);
+        localStorage.setItem('role', response.user.role);
+        localStorage.setItem('id', response.user.id.toString());
 
-      this.auth.token = response.accessToken;
-      this.auth.id = response.user.id.toString();
-      this.auth.role = response.user.role;
-
-      localStorage.setItem('accesToken', this.auth.token);
-      localStorage.setItem('role', this.auth.role);
-      localStorage.setItem('id', this.auth.id.toString());
-
-      if (this.auth.role === 'admin'){
-        this.router.navigate(['admin-component']);
-      } else if(this.auth.role === 'waiter') {
-        this.router.navigate(['waiter-component']);
-      } else if(this.auth.role === 'cook') {
-        this.router.navigate(['cook-component']);
-      }
-
-    }, (error) => {
-      if(error.error === 'Cannot find user' || error.error === 'Incorrect password') {
-        console.log('Credenciales incorrectas');
+        this.redirectByRole(response.user.role);
       }
     })
-    console.log(credentials);
-
-
   }
 }
