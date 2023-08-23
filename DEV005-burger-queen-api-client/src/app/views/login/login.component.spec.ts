@@ -69,4 +69,5 @@ fdescribe('LoginComponent', () => {
   })
 
   // como simular un click, un submit (simular un evento)
+  // Agregar test para probar que muestra mensaje de error
 });
