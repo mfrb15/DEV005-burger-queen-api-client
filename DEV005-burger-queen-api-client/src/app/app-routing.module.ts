@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CookComponent } from './components/cook/cook.component';
-import { WaiterComponent } from './components/waiter/waiter.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { LoginComponent } from './components/login/login.component';
+import { CookComponent } from './views/cook/cook.component';
+import { WaiterComponent } from './views/waiter/waiter.component';
+import { AdminComponent } from './views/admin/admin.component';
+import { LoginComponent } from './views/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CookGuard } from './guards/cook.guard';
 import { WaiterGuard } from './guards/waiter.guard';

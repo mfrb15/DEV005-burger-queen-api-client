@@ -12,6 +12,8 @@ import { Credentials } from 'src/app/models/login.interface';
 })
 export class LoginComponent {
 
+  public incorrectCredentials = '';
+
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
@@ -43,7 +45,7 @@ export class LoginComponent {
     this.auth.loginByEmail(credentials)
     .subscribe((response) => {
       if (typeof response === 'string') {
-        console.log('Las credenciales son incorrectas');
+        this.incorrectCredentials = 'Credenciales Incorrectas';
       } else {
         console.log(response);
         localStorage.setItem('accesToken', response.accessToken);

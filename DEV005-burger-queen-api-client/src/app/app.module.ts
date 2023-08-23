@@ -4,15 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CookComponent } from './components/cook/cook.component';
-import { WaiterComponent } from './components/waiter/waiter.component';
-import { AdminComponent } from './components/admin/admin.component';
+import { CookComponent } from './views/cook/cook.component';
+import { WaiterComponent } from './views/waiter/waiter.component';
+import { AdminComponent } from './views/admin/admin.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './views/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LogoComponent } from './components/logo/logo.component';
-import {  AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { WaiterGuard } from './guards/waiter.guard';
 import { CookGuard } from './guards/cook.guard';
 import { AdminGuard } from './guards/admin.guard';
@@ -26,7 +26,7 @@ import { AdminGuard } from './guards/admin.guard';
     WaiterComponent,
     AdminComponent,
     LoginComponent,
-    LogoComponent
+    LogoComponent,
   ],
   imports: [
     BrowserModule,
