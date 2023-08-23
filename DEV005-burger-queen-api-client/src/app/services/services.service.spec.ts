@@ -28,10 +28,10 @@ fdescribe('ServicesService', () => {
     expect(token).toBeNull(); // Verifica que el token sea nulo en este caso
   });
 
-  it('should get role from local storage', () => {
-    localStorage.setItem('role', 'testRole'); // Establece manualmente un valor en el almacenamiento local
-    const role = service.getRole(); // Llama a la función para obtener el rol
-    expect(role).toBe('testRole'); // Verifica que el rol obtenido sea el mismo que el establecido
+  it('should get token from local storage', () => {
+    localStorage.setItem('accesToken', 'testToken' ); // Asegura hay valor inicial
+    const token = service.getToken();  // Llama a la función para obtener el token
+    expect(token).toBe('testToken'); // Verifica que que existe token
   });
 
   it('should login successfully', () => {
