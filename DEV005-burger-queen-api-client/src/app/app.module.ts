@@ -16,6 +16,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { WaiterGuard } from './guards/waiter.guard';
 import { CookGuard } from './guards/cook.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { TabBarComponent } from './components/tab-bar/tab-bar.component';
 @NgModule({
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -27,6 +28,7 @@ import { AdminGuard } from './guards/admin.guard';
     AdminComponent,
     LoginComponent,
     LogoComponent,
+    TabBarComponent,
   ],
   imports: [
     BrowserModule,

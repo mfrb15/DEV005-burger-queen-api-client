@@ -1,0 +1,9 @@
+<div class="tab-bar">
+  <button class="tab-button" [ngClass]="{ 'active': activeTab === 'breakfast' }" (click)="openTab('breakfast')">Desayunos</button>
+  <button class="tab-button" [ngClass]="{ 'active': activeTab === 'lunch-dinner' }" (click)="openTab('lunch-dinner')">Almuerzos/Cenas</button>
+</div>
+
+<div class="tab-content">
+  <div *ngIf="activeTab === 'breakfast'">Contenido de desayunos</div>
+  <div *ngIf="activeTab === 'lunch-dinner'">Contenido de almuerzos/cenas</div>
+</div>
