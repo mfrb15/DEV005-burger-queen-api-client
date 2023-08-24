@@ -10,12 +10,12 @@ import { ServicesService } from 'src/app/services/services.service';
 export class OrdersComponent {
   constructor(private service: ServicesService) {}
 
-  list: Array<Product> = [];
+  productList: Array<Product> = [];
 
-  createOrder() {
-    this.service.getOrders().subscribe((data) => {
+  showProducts() {
+    this.service.getProducts().subscribe((data) => {
       console.log(data);
-      this.list = [data];
+      this.productList = [data];
     })
 
   }
