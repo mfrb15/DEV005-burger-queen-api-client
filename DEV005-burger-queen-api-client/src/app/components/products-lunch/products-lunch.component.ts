@@ -13,12 +13,14 @@ export class ProductsLunchComponent implements OnInit {
 
   productList: Product[] = [];
 
+  // Se agrega la función dentro de ngOnInit para que nada más ingresar a la vista, se muestren los productos.
   ngOnInit(): void {
     this.showLunchProducts();
   }
 
   showLunchProducts() {
     this.service.getProducts().subscribe((data) => {
+      // Para que sólo se muestre el almuerzo, filtro por type la data
       this.productList = data.filter(product => product.type === 'Almuerzo');
     })
   }
