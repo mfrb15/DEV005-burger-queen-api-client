@@ -21,6 +21,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { ButtonSustractComponent } from './components/button-sustract/button-sustract.component';
 import { ButtonSendOrderComponent } from './components/button-send-order/button-send-order.component';
 import { InputClientComponent } from './components/input-client/input-client.component';
+import { ProductsBreakfastComponent } from './components/products-breakfast/products-breakfast.component';
 @NgModule({
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -37,6 +38,7 @@ import { InputClientComponent } from './components/input-client/input-client.com
     ButtonSustractComponent,
     ButtonSendOrderComponent,
     InputClientComponent,
+    ProductsBreakfastComponent,
   ],
   imports: [
     BrowserModule,

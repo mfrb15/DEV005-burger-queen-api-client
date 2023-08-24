@@ -6,7 +6,7 @@
   <!-- <div class="tab-indicator" *ngIf="activeTab === tab.name"></div> muestra la barra indicadora debajo de la pestaña activa. -->
   <button
     *ngFor="let tab of tabs"
-    class="tab-button"
+    class="tab-button "
     [class.active]="activeTab === tab.name"
     (click)="openTab(tab.name)"
   >
@@ -16,6 +16,8 @@
 </div>
 
 <div class="tab-content">
-  <div *ngIf="activeTab === 'breakfast'">Contenido de desayunos</div>
+  <div *ngIf="activeTab === 'breakfast'">
+    <app-products-breakfast> </app-products-breakfast>
+  </div>
   <div *ngIf="activeTab === 'lunch-dinner'">Contenido de almuerzos/cenas</div>
 </div>

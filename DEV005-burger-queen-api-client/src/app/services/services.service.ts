@@ -40,7 +40,7 @@ export class ServicesService {
 
   // aqui iría la función obtener productos.
   getProducts(): Observable<Product> {
-    const direction = this.apiUrl + 'orders';
+    const direction = this.apiUrl + 'products';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('accesToken')}`,
