@@ -17,6 +17,9 @@ import { WaiterGuard } from './guards/waiter.guard';
 import { CookGuard } from './guards/cook.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { TabBarComponent } from './components/tab-bar/tab-bar.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { ButtonSustractComponent } from './components/button-sustract/button-sustract.component';
+import { ButtonSendOrderComponent } from './components/button-send-order/button-send-order.component';
 import { InputClientComponent } from './components/input-client/input-client.component';
 @NgModule({
   schemas: [
@@ -30,6 +33,9 @@ import { InputClientComponent } from './components/input-client/input-client.com
     LoginComponent,
     LogoComponent,
     TabBarComponent,
+    OrdersComponent,
+    ButtonSustractComponent,
+    ButtonSendOrderComponent,
     InputClientComponent,
   ],
   imports: [

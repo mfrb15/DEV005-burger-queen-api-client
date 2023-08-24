@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Credentials, LoginResponse } from '../models/login.interface';
-import { HttpClient, } from '@angular/common/http';
+import { HttpClient, HttpHeaders, } from '@angular/common/http';
 import { Observable, catchError, of} from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Product } from '../models/products.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,14 @@ export class ServicesService {
     );
   }
 
-  // aqui iría la función obtener productos....
+  // aqui iría la función obtener productos.
+  getProducts(): Observable<Product> {
+    const direction = this.apiUrl + 'orders';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('accesToken')}`,
+    });
+    return this.http.get<Product>(direction, { headers: headers });
+  }
 
 }
