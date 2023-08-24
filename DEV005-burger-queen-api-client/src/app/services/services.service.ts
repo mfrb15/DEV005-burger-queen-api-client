@@ -37,6 +37,6 @@ export class ServicesService {
     );
   }
 
-  // aqui iría la función obtener productos.
+  // aqui iría la función obtener productos....
 
 }
