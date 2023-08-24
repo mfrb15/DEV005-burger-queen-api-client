@@ -4,23 +4,23 @@ import { ServicesService } from 'src/app/services/services.service';
 import { OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-products-breakfast',
-  templateUrl: './products-breakfast.component.html',
-  styleUrls: ['./products-breakfast.component.css']
+  selector: 'app-products-lunch',
+  templateUrl: './products-lunch.component.html',
+  styleUrls: ['./products-lunch.component.css']
 })
-export class ProductsBreakfastComponent implements OnInit{
+export class ProductsLunchComponent implements OnInit {
   constructor(private service: ServicesService) {}
 
   productList: Product[] = [];
 
   ngOnInit(): void {
-    this.showBreakfastProducts();
+    this.showLunchProducts();
   }
 
-  showBreakfastProducts() {
+  showLunchProducts() {
     this.service.getProducts().subscribe((data) => {
-      console.log(data);
-      this.productList = data.filter(product => product.type === 'Desayuno');
+      this.productList = data.filter(product => product.type === 'Almuerzo');
     })
   }
+
 }

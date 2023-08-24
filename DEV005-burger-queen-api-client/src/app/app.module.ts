@@ -1,13 +1,11 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // No es necesario importar Router, ActivatedRoute, ni ParamMap aquí
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CookComponent } from './views/cook/cook.component';
 import { WaiterComponent } from './views/waiter/waiter.component';
 import { AdminComponent } from './views/admin/admin.component';
-
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './views/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,6 +20,8 @@ import { ButtonSustractComponent } from './components/button-sustract/button-sus
 import { ButtonSendOrderComponent } from './components/button-send-order/button-send-order.component';
 import { InputClientComponent } from './components/input-client/input-client.component';
 import { ProductsBreakfastComponent } from './components/products-breakfast/products-breakfast.component';
+import { ProductsLunchComponent } from './components/products-lunch/products-lunch.component';
+
 @NgModule({
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -39,6 +39,7 @@ import { ProductsBreakfastComponent } from './components/products-breakfast/prod
     ButtonSendOrderComponent,
     InputClientComponent,
     ProductsBreakfastComponent,
+    ProductsLunchComponent,
   ],
   imports: [
     BrowserModule,
