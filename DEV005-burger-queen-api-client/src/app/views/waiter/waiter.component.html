@@ -1,14 +1,12 @@
 <app-logo [size]="'small'"></app-logo>
-<app-tab-bar ></app-tab-bar>
-
-<div class="container">
-  <div class="inputContainer">
-    <label class="labelWaiter">Nombre del cliente</label>
-    <label class="labelWaiter">Mesa</label>
+<app-input-client></app-input-client>
+<app-tab-bar [activeTab]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
+  <div class="tab-content">
+    <div *ngIf="activeTab === 'breakfast'">
+      <app-products-breakfast></app-products-breakfast>
+    </div>
+    <div *ngIf="activeTab === 'lunch-dinner'">
+      <app-products-lunch></app-products-lunch>
+    </div>
   </div>
-
-  <div class="inputContainer">
-    <input type="text" id="email" class="inputClient" required placeholder="Ingrese nombre">
-    <input type="text" class="inputTable inputClient " required placeholder="N°">
-  </div>
-</div>
+</app-tab-bar>

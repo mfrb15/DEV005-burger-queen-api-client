@@ -1,9 +1,14 @@
-<div class="tab-bar">
-  <button class="tab-button" [ngClass]="{ 'active': activeTab === 'breakfast' }" (click)="openTab('breakfast')">Desayunos</button>
-  <button class="tab-button" [ngClass]="{ 'active': activeTab === 'lunch-dinner' }" (click)="openTab('lunch-dinner')">Almuerzos/Cenas</button>
+<div class="tab-barContainer">
+  <!-- con *ngFor Iteramos a del array tabs Esto generara un boton para cada objeto del array tabs que esta en TS -->
+  <!-- La directiva [class.active] se usa para aplicar la clase active al botón si el valor de activeTab coincide con el nombre de la pestaña actual. -->
+  <!-- (click) está vinculado al evento de clic en el botón y llama a la función openTab() con el nombre de la pestaña como argumento. -->
+  <!-- {{ tab.label }} muestra el texto de la etiqueta de la pestaña en el botón. -->
+  <!-- <div class="tab-indicator" *ngIf="activeTab === tab.name"></div> muestra la barra indicadora debajo de la pestaña activa. -->
+  <div class="tab-button-div" *ngFor="let tab of tabMenu">
+    <button class="tab-button" [class.active]="activeTab === tab.name" (click)="openTab(tab.name)">
+      {{ tab.label }}
+    </button>
+    <div class="tab-indicator" *ngIf="activeTab === tab.name"></div>
+  </div>
 </div>
-
-<div class="tab-content">
-  <div *ngIf="activeTab === 'breakfast'">Contenido de desayunos</div>
-  <div *ngIf="activeTab === 'lunch-dinner'">Contenido de almuerzos/cenas</div>
-</div>
+<ng-content></ng-content>
