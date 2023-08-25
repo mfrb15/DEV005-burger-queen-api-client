@@ -1,7 +1,29 @@
 <p> Soy products Lunch Component</p>
 
-<div class="order-container" *ngFor="let product of productList">
-  <p class="order-item"> {{ product.name }} </p>
-  <p class="order-item"> {{ product.price }} </p>
-</div>
+<div class="menu-container">
 
+  <h3 class="product-title">Hamburguesas</h3>
+  <div class="product-div" *ngFor="let product of productList">
+    <div class="product-and-prize" *ngIf="showByName(product, 'Hamburguesa')">
+      <p class="product-item name">{{ product.name }}</p>
+      <p class="product-item price">$ {{ product.price }}</p>
+    </div>
+  </div>
+
+  <h3 class="product-title">Para tomar</h3>
+  <div class="product-div" *ngFor="let product of productList">
+    <div class="product-and-prize" *ngIf="showByName(product, 'tomar')">
+      <p class="product-item name">{{ product.name }}</p>
+      <p class="product-item price">$ {{ product.price }}</p>
+    </div>
+  </div>
+
+  <h3 class="product-title">Acompañamiento</h3>
+  <div class="product-div" *ngFor="let product of productList">
+    <div class="product-and-prize" *ngIf="showByName(product, 'Acompañamiento')">
+      <p class="product-item name">{{ product.name }}</p>
+      <p class="product-item price">$ {{ product.price }}</p>
+    </div>
+
+  </div>
+</div>

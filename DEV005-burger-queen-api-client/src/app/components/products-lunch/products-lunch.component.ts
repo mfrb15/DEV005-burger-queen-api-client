@@ -18,6 +18,10 @@ export class ProductsLunchComponent implements OnInit {
     this.showLunchProducts();
   }
 
+  showByName(product: Product, category: string): boolean {
+    return product.name.includes(category);
+  }
+
   showLunchProducts() {
     this.service.getProducts().subscribe((data) => {
       // Para que sólo se muestre el almuerzo, filtro por type la data

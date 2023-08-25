@@ -17,6 +17,11 @@ export class ProductsBreakfastComponent implements OnInit{
     this.showBreakfastProducts();
   }
 
+  showByName(product: Product, name: string): boolean {
+    return product.name.includes(name);
+  }
+
+
   showBreakfastProducts() {
     this.service.getProducts().subscribe((data) => {
       console.log(data);
@@ -24,4 +29,5 @@ export class ProductsBreakfastComponent implements OnInit{
       this.productList = data.filter(product => product.type === 'Desayuno');
     })
   }
+
 }
