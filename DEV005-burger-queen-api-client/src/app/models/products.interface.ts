@@ -7,3 +7,8 @@ export interface Product {
   category?: string,
   dateEntry: string,
 }
+
+export interface tabButton {
+  name: string,
+  label: string,
+}
