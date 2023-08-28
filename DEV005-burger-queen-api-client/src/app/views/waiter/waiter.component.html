@@ -1,2 +1,12 @@
 <app-logo [size]="'small'"></app-logo>
-<h1>Toma la Orden de tu cliente </h1>
+<app-input-client></app-input-client>
+<app-tab-bar [activeTab]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
+  <div class="tab-content">
+    <div *ngIf="activeTab === 'breakfast'">
+      <app-products-breakfast></app-products-breakfast>
+    </div>
+    <div *ngIf="activeTab === 'lunch-dinner'">
+      <app-products-lunch></app-products-lunch>
+    </div>
+  </div>
+</app-tab-bar>

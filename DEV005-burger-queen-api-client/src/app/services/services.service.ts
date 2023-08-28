@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Credentials, LoginResponse } from '../models/login.interface';
-import { HttpClient, } from '@angular/common/http';
+import { HttpClient, HttpHeaders, } from '@angular/common/http';
 import { Observable, catchError, of} from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Product } from '../models/products.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +20,7 @@ export class ServicesService {
   getRole(): string | null  {
     return localStorage.getItem('role');
   }
-  // Se pasa la función para hacer login que recibe un formulario de tipo loginI (interfaz) y va retornar un objeto observable de tipo responseI
-  // loginByEmail(form: Credentials): Observable<LoginResponse> {
-  //   // Variable con la dirección de dónde vamos a postear el formulario
-  //   const direction = this.url + "login"
-  //   return this.http.post<LoginResponse>(direction, form)
-  // }
+
   loginByEmail(credentials: Credentials): Observable<LoginResponse> {
     const direction = this.apiUrl + 'login';
     return this.http.post<LoginResponse>(direction, credentials).pipe(
@@ -37,6 +33,13 @@ export class ServicesService {
     );
   }
 
-  // aqui iría la función obtener productos.
+  getProducts(): Observable<Product[]> {
+    const direction = this.apiUrl + 'products';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('accesToken')}`,
+    });
+    return this.http.get<Product[]>(direction, { headers: headers });
+  }
 
 }

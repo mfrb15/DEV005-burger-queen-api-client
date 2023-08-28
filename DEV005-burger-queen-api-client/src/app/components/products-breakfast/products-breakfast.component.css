@@ -1,0 +1,35 @@
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  height: 47rem;
+  flex-shrink: 0;
+}
+
+.product-and-prize {
+  display: flex;
+  flex-direction: row;
+}
+
+.product-div {
+  display: flex;
+  width: 100%;
+}
+
+.product-and-prize {
+  display: flex;
+  width: 100%;
+}
+
+.product-item {
+  border: 1px solid black;
+}
+
+.name {
+  width: 60%;
+}
+
+.price {
+  align-self: flex-end;
+  width: 30%;
+}
