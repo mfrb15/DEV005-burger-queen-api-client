@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ServicesService } from 'src/app/services/users.service';
+import { UserService } from 'src/app/services/users.service';
 
 import { Router } from '@angular/router';
 import { Credentials } from 'src/app/models/login.interface';
@@ -20,7 +20,7 @@ export class LoginComponent {
   })
   public formSubmitted = false;
 
-  constructor(private auth: ServicesService, private router: Router) { }
+  constructor(private auth: UserService, private router: Router) { }
 
   // crear aquí función para redirigir
   redirectByRole(role: string) {

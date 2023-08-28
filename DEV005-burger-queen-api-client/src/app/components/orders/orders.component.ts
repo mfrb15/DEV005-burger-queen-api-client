@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ServicesService } from 'src/app/services/users.service';
+import { OrderProductService } from 'src/app/services/orderProduct.service';
 // import { Order } from 'src/app/models/products.interface';
 
 
@@ -9,7 +9,7 @@ import { ServicesService } from 'src/app/services/users.service';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent {
-  constructor(private service: ServicesService) { }
+  constructor(private service: OrderProductService) { }
   createOrder() {
     this.service.postOrder().subscribe((data) => {
       console.log(data);

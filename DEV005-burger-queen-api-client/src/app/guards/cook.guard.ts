@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 
-import { ServicesService } from '../services/users.service';
+import { UserService } from '../services/users.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CookGuard implements CanActivate {
-  constructor(private router: Router, private authService: ServicesService) { }
+  constructor(private router: Router, private authService: UserService) { }
 
 
   canActivate(): boolean {
