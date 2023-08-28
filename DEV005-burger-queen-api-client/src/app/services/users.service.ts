@@ -3,7 +3,7 @@ import { Credentials, LoginResponse } from '../models/login.interface';
 import { HttpClient, HttpHeaders, } from '@angular/common/http';
 import { Observable, catchError, of} from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Product } from '../models/products.interface';
+import { Order, Product } from '../models/products.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -42,4 +42,15 @@ export class ServicesService {
     return this.http.get<Product[]>(direction, { headers: headers });
   }
 
+  // Get order
+
+  postOrder(): Observable<Order> {
+    const direction = this.apiUrl + 'orders';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('accesToken')}`,
+    });
+    console.log(this.http.get<Order>(direction, {headers: headers}))
+    return this.http.post<Order>(direction, {headers: headers})
+  }
 }

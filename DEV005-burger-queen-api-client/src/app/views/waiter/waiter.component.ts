@@ -7,7 +7,7 @@ import { tabButton } from 'src/app/models/products.interface';
   styleUrls: ['./waiter.component.css']
 })
 export class WaiterComponent {
-  activeTab = 'Desayuno';
+  activeTab = 'breakfast';
   tabMenu: tabButton[] = [ // Array de objetos que contiene la info de las pestanas
     { name: 'breakfast', label: 'Desayunos' },
     { name: 'lunch-dinner', label: 'Almuerzos/Cenas' }

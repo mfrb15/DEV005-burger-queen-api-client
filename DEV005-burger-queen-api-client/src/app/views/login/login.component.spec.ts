@@ -4,7 +4,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { LoginComponent } from './login.component';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { ServicesService } from 'src/app/services/services.service';
+import { ServicesService } from 'src/app/services/users.service';
 
 fdescribe('LoginComponent', () => {
   let component: LoginComponent;

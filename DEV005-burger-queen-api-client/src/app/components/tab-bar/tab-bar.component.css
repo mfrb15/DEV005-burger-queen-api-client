@@ -28,7 +28,7 @@
 }
 
 .tab-button.active {
-  color: #FF9700;
+  color: #005A96;
 }
 
 .tab-indicator {
@@ -37,7 +37,7 @@
   width: 100%;
   height: 3px;
   border-radius: 5px;
-  background-color: #FF9700;
+  background-color: #005A96;
 }
 
 .tab-content {
