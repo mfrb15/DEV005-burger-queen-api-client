@@ -1,6 +1,3 @@
-
-
-
 import { Component } from '@angular/core';
 import { tabButton } from 'src/app/models/products.interface';
 import { Product } from 'src/app/models/products.interface';
@@ -22,8 +19,8 @@ export class WaiterComponent {
   constructor(private service: OrderProductService) {} // Inyecta el servicio
 
   onProductAdded(product: Product) {
-    console.log( this.selectedProduct.push(product), 'ahora si')
     this.selectedProduct.push(product);
+    console.log( product, 'ahora si')
     // this.createOrder(); //FALTABA LLAMAR A LA FUNCION DESDE WAITER COMPONENT Y NO DESDE EL BUTTON
   }
 
