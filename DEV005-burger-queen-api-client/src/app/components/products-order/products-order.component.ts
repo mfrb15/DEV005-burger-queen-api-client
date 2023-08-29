@@ -8,17 +8,17 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
   styleUrls: ['./products-order.component.css']
 })
 export class ProductsOrderComponent {
-  @Input() productList: Product[] = [];
   constructor(private service: OrderProductService) { }
-
-  createOrder() {
-    // Call the postOrder method from OrderProductService
-    this.service.postOrder().subscribe((data) => {
-      console.log(data);
-    });
-  }
-
-  clearOrder() {
-    this.productList = [];
-  }
+@Input() productList: Product[] = [];
+createOrder() {
+  this.service.postOrder().subscribe((data) => {
+    console.log(data);
+  })
 }
+
+clearOrder() {
+  this.productList = [];
+}
+// hacer una funcion que conecte el boton con este componente
+}
+

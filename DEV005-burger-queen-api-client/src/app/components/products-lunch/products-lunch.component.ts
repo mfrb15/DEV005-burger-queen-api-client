@@ -1,15 +1,32 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Product } from 'src/app/models/products.interface';
+import { ProductsService } from 'src/app/services/products.service';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-products-lunch',
   templateUrl: './products-lunch.component.html',
   styleUrls: ['./products-lunch.component.css']
 })
-export class ProductsLunchComponent {
-  @Output() productAdded = new EventEmitter<Product>();
+export class ProductsLunchComponent implements OnInit {
+  constructor(private service: ProductsService) {}
 
-  addToOrder(product: Product) {
-    this.productAdded.emit(product);
+  productList: Product[] = [];
+
+  // Se agrega la función dentro de ngOnInit para que nada más ingresar a la vista, se muestren los productos.
+  ngOnInit(): void {
+    this.showLunchProducts();
+  }
+
+  // showByName(product: Product, category: string): boolean {
+  //   return product.name.includes(category);
+  // }
+
+  showLunchProducts() {
+    this.service.getProducts().subscribe((data) => {
+      // Para que sólo se muestre el almuerzo, filtro por type la data
+      this.productList = data.filter(product => product.type === 'Almuerzo');
+    })
   }
 }
+

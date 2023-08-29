@@ -1,3 +1,6 @@
+
+
+
 import { Component } from '@angular/core';
 import { tabButton } from 'src/app/models/products.interface';
 import { Product } from 'src/app/models/products.interface';
@@ -19,8 +22,9 @@ export class WaiterComponent {
   constructor(private service: OrderProductService) {} // Inyecta el servicio
 
   onProductAdded(product: Product) {
+    console.log( this.selectedProduct.push(product), 'ahora si')
     this.selectedProduct.push(product);
-    this.createOrder(); //FALTABA LLAMAR A LA FUNCION DESDE WAITER COMPONENT Y NO DESDE EL BUTTON
+    // this.createOrder(); //FALTABA LLAMAR A LA FUNCION DESDE WAITER COMPONENT Y NO DESDE EL BUTTON
   }
 
   createOrder() {
@@ -36,6 +40,27 @@ export class WaiterComponent {
 }
 
 
+// import { Component } from '@angular/core';
+// import { tabButton } from 'src/app/models/products.interface';
+
+
+// @Component({
+//   selector: 'app-waiter',
+//   templateUrl: './waiter.component.html',
+//   styleUrls: ['./waiter.component.css']
+// })
+// export class WaiterComponent {
+
+//   activeTab = 'breakfast';
+//   tabMenu: tabButton[] = [ // Array de objetos que contiene la info de las pestanas
+//     { name: 'breakfast', label: 'Desayunos' },
+//     { name: 'lunch-dinner', label: 'Almuerzos/Cenas' }
+//   ];
+
+//   onTabChange(tabName: string) {
+//     this.activeTab = tabName;
+//   }
+// }
 
 
 

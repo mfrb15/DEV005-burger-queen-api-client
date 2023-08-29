@@ -33,6 +33,5 @@ clearOrder() {
     console.log(this.http.get<Order>(direction, {headers: headers}))
     return this.http.post<Order>(direction, {headers: headers})
   }
-
-
 }
+
