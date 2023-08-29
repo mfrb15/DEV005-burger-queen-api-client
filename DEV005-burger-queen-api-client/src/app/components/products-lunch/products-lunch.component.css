@@ -1,35 +1,27 @@
 .menu-container {
-  display: flex;
-  flex-direction: column;
-  width: 25rem;
-  height: 47rem;
-  flex-shrink: 0;
-}
-
-.product-and-prize {
-  display: flex;
-  flex-direction: row;
+  width: 500px;
 }
 
 .product-div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.divButton {
+  margin-left: auto;
+}
+
+.product-info {
   display: flex;
-  width: 100%;
+  align-items: center;
+  margin-right: 20px;
+ justify-content: space-between;
 }
 
-.product-and-prize {
-  display: flex;
-  width: 100%;
-}
-
-.product-item {
-  border: 1px solid black;
-}
-
-.name {
-  width: 60%;
-}
-
-.price {
-  align-self: flex-end;
-  width: 30%;
+.product-name,
+.product-price {
+  margin: 0;
 }

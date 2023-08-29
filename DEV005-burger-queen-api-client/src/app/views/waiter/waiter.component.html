@@ -1,16 +1,17 @@
 <app-logo [size]="'small'"></app-logo>
 <app-input-client></app-input-client>
-<app-tab-bar [activeTab]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
+<app-tab-bar [activeTab]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange('$event')">
   <div class="tab-content">
     <div *ngIf="activeTab === 'breakfast'">
-      <app-products-breakfast>  </app-products-breakfast>
+      <app-products-breakfast (productAdded)="onProductAdded($event)"></app-products-breakfast>
     </div>
     <div *ngIf="activeTab === 'lunch-dinner'">
-      <app-products-lunch></app-products-lunch>
+      <app-products-lunch (productAdded)="onProductAdded($event)"></app-products-lunch>
     </div>
   </div>
 </app-tab-bar>
 
 <div>
-  <app-orders></app-orders>
+  <app-products-order [productList]="selectedProduct"></app-products-order>
 </div>
+<!-- <button (click)="createOrder()">Crear orden</button> -->

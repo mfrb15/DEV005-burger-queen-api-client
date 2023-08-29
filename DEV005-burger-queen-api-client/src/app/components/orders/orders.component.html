@@ -1,4 +1,10 @@
-<p>orders works!</p>
+<p>Resumen de pedido </p>
+<div class="root">
+  <p>Item</p>
+  <p>Precio</p>
+</div>
+<app-products-order [products]="selectedProduct">  </app-products-order>
 <button (click)="createOrder()">
   Crear orden
 </button>
+
