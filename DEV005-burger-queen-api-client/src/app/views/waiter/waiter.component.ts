@@ -19,8 +19,9 @@ export class WaiterComponent {
   constructor(private service: OrderProductService) {} // Inyecta el servicio
 
   onProductAdded(product: Product) {
-    this.selectedProduct.push(product);
     console.log( product, 'ahora si')
+    this.selectedProduct.push(product);
+    // aquí hay que incluir la lógica para ver si es que en caso de existir un producto ya en el array, cambie la lógica.
     // this.createOrder(); //FALTABA LLAMAR A LA FUNCION DESDE WAITER COMPONENT Y NO DESDE EL BUTTON
   }
 
@@ -33,6 +34,7 @@ export class WaiterComponent {
 
   onTabChange(tabName: string) {
     this.activeTab = tabName;
+    // filtrar array de productos según el tabName elegidos
   }
 }
 

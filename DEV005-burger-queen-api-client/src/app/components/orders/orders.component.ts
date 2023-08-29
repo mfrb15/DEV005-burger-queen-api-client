@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 // import { Order } from 'src/app/models/products.interface';
@@ -9,11 +9,16 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
-export class OrdersComponent {
+export class OrdersComponent implements OnChanges {
+  @Input() productOrderList: Product[] = [];
   constructor(private service: OrderProductService) { }
-  selectedProduct: Product[] = [];
 
-productOrderList: Product [] = [];
+  ngOnChanges(): void {
+    console.log(this.productOrderList);
+  }
+  // selectedProduct: Product[] = [];
+
+// productOrderList: Product [] = [];
   createOrder() {
     this.service.postOrder().subscribe((data) => {
       console.log(data);
@@ -21,7 +26,7 @@ productOrderList: Product [] = [];
   }
 
   onProductAdded(product: Product) {
-    console.log(this.selectedProduct.push(product), 'llego la info al padre', product)
-    // this.selectedProduct.push(product);
+    console.log(product, 'llego la info al padre')
+    //this.selectedProduct.push(product);
   }
 }

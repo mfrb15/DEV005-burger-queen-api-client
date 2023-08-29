@@ -25,6 +25,7 @@ export class ProductsBreakfastComponent implements OnInit {
       this.productList = data.filter(product => product.type === 'Desayuno');
     })
   }
+
   addToOrder(product: Product){
     console.log(product, 'Funciona el boton')
     this.productAdded.emit(product);

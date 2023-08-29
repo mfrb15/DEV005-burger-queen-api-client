@@ -9,7 +9,7 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
 })
 export class ProductsOrderComponent {
   constructor(private service: OrderProductService) { }
-@Input() productList: Product[] = [];
+@Input() products: Product[] = [];
 createOrder() {
   this.service.postOrder().subscribe((data) => {
     console.log(data);
@@ -17,7 +17,7 @@ createOrder() {
 }
 
 clearOrder() {
-  this.productList = [];
+  this.products = [];
 }
 // hacer una funcion que conecte el boton con este componente
 }
