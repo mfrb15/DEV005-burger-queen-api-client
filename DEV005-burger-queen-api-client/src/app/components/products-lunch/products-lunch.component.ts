@@ -18,8 +18,8 @@ export class ProductsLunchComponent implements OnInit {
     this.showLunchProducts();
   }
 
-  showByName(product: Product, category: string): boolean {
-    return product.name.includes(category);
+  showByName(product: Product, category: string) {
+    return product.category?.includes(category);
   }
 
   showLunchProducts() {
