@@ -1,10 +1,12 @@
-<p>Resumen de pedido </p>
-<div class="root">
-  <p>Item</p>
-  <p>Precio</p>
+<div class="resumenPedido">
+  <div class="tab-content">
+    <p>Resumen de pedido </p>
+  </div>
+  <div class="itemAndPrice">
+    <p>Item</p>
+    <p>Precio</p>
+  </div>
+  <div class="productsOrder">
+    <app-products-order [products]="productOrderList"> </app-products-order>
+  </div>
 </div>
-<app-products-order [products]="productOrderList">  </app-products-order>
-<button (click)="createOrder()">
-  Crear orden
-</button>
-

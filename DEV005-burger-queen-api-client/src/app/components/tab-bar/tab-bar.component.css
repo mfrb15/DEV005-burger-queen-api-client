@@ -3,11 +3,13 @@
   width: 25rem;
   margin-left: 3%;
   justify-content: center;
+  /* background-color: blue; */
 }
 
 
 .tab-button-div {
   width: 50%;
+  /* background-color: aquamarine; */
 }
 
 .tab-button {
@@ -40,7 +42,4 @@
   background-color: #005A96;
 }
 
-.tab-content {
-  width: 25rem;
-}
 
