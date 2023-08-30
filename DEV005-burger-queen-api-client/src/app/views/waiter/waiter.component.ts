@@ -9,7 +9,9 @@ import { OrderProductService } from 'src/app/services/orderProduct.service'; // 
   styleUrls: ['./waiter.component.css']
 })
 export class WaiterComponent {
+  filteredProducts: Product[] = [];
   selectedProduct: Product[] = [];
+  // products: Product[] = [];
   activeTab = 'breakfast';
   tabMenu: tabButton[] = [
     { name: 'breakfast', label: 'Desayunos' },
@@ -34,6 +36,11 @@ export class WaiterComponent {
 
   onTabChange(tabName: string) {
     this.activeTab = tabName;
+    if (tabName === 'breakfast') {
+      this.filteredProducts = this.products.filter(product => product.type === 'Desayuno');
+    } else if (tabName === 'lunch-dinner') {
+      this.filteredProducts = this.products.filter(product => product.type === 'Almuerzo');
+    }
     // filtrar array de productos según el tabName elegidos
   }
 }

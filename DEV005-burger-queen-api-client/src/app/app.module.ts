@@ -19,10 +19,10 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { ButtonSustractComponent } from './components/button-sustract/button-sustract.component';
 import { ButtonSendOrderComponent } from './components/button-send-order/button-send-order.component';
 import { InputClientComponent } from './components/input-client/input-client.component';
-import { ProductsBreakfastComponent } from './components/products-breakfast/products-breakfast.component';
-import { ProductsLunchComponent } from './components/products-lunch/products-lunch.component';
+// import { ProductsBreakfastComponent } from './components/products-breakfast/products-breakfast.component';
 import { ButtonAddComponent } from './components/button-add/button-add.component';
 import { ProductsOrderComponent } from './components/products-order/products-order.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   schemas: [
@@ -40,10 +40,10 @@ import { ProductsOrderComponent } from './components/products-order/products-ord
     ButtonSustractComponent,
     ButtonSendOrderComponent,
     InputClientComponent,
-    ProductsBreakfastComponent,
-    ProductsLunchComponent,
+    // ProductsBreakfastComponent,
     ButtonAddComponent,
     ProductsOrderComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
