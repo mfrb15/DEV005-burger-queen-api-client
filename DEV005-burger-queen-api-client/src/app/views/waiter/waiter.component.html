@@ -2,14 +2,10 @@
 <app-input-client></app-input-client>
 <app-tab-bar [activeTab]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
   <div class="divMenuAndOrder">
-    <app-products
-      *ngIf="activeTab === 'breakfast'"
-      [productList]="filteredProducts">
-    </app-products>
-    <app-products
-      *ngIf="activeTab === 'lunch-dinner'"
-      [productList]="filteredProducts">
-    </app-products>
+    <app-menu>
+    </app-menu>
+    <app-menu>
+    </app-menu>
     <app-orders [productOrderList]="selectedProduct"></app-orders>
   </div>
 </app-tab-bar>

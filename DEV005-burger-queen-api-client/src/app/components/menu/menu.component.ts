@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/products.interface';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -7,15 +7,15 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit{
   constructor(private service: ProductsService) { }
   productList: Product[] = [];
 
   @Output() productAdded = new EventEmitter<Product>();
 
-  // ngOnInit(): void {
-  //   this.showBreakfastProducts();
-  // }
+  ngOnInit(): void {
+    this.showBreakfastProducts();
+  }
 
   showBreakfastProducts() {
     this.service.getProducts().subscribe((data) => {
