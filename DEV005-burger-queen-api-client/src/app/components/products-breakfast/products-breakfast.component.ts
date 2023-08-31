@@ -10,7 +10,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductsBreakfastComponent implements OnInit {
   constructor(private service: ProductsService) { }
   @Output() productAdded = new EventEmitter<Product>();
-
+  @Output() productsEmitter = new EventEmitter<Product[]>();
 
   productList: Product[] = [];
 
@@ -24,6 +24,10 @@ export class ProductsBreakfastComponent implements OnInit {
       // Para que sólo se muestre el desayuno, filtro por type la data.
       this.productList = data;
     })
+  }
+
+  passProductToParent() {
+    this.productsEmitter.emit(this.productList);
   }
 
   addToOrder(product: Product){
