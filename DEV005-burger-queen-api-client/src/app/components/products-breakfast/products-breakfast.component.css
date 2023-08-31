@@ -20,11 +20,11 @@
   margin-left: auto;
 }
 
-.product-info {
+.item-info {
   display: flex;
   align-items: center;
   margin-right: 20px;
- justify-content: space-between;
+  justify-content: space-between;
 }
 
 .product-name,

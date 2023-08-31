@@ -22,7 +22,7 @@ export class ProductsBreakfastComponent implements OnInit {
     this.service.getProducts().subscribe((data) => {
       console.log(data);
       // Para que sólo se muestre el desayuno, filtro por type la data.
-      this.productList = data.filter(product => product.type === 'Desayuno');
+      this.productList = data;
     })
   }
 

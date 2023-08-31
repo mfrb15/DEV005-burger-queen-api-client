@@ -4,7 +4,7 @@
   <!-- (click) está vinculado al evento de clic en el botón y llama a la función openTab() con el nombre de la pestaña como argumento. -->
   <!-- {{ tab.label }} muestra el texto de la etiqueta de la pestaña en el botón. -->
   <!-- <div class="tab-indicator" *ngIf="activeTab === tab.name"></div> muestra la barra indicadora debajo de la pestaña activa. -->
-  <div class="tab-button-div" *ngFor="let tab of tabMenu">
+  <div class="tab-button-div" *ngFor="let tab of tabOptions">
     <button class="tab-button" [class.active]="activeTab === tab.name" (click)="openTab(tab.name)">
       {{ tab.label }}
     </button>

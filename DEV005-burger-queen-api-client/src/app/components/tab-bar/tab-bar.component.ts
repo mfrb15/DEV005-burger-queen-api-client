@@ -8,7 +8,7 @@ import { tabButton } from 'src/app/models/products.interface';
 })
 export class TabBarComponent {
   @Input() activeTab = ''; // variable que almacena el nombre de la pestaña activa actual.
-  @Input() tabMenu: tabButton[] = [];
+  @Input() tabOptions: tabButton[] = [];
   @Output() tabChange: EventEmitter<string> = new EventEmitter();
 
   // tabMenu = [ // Array de objetos que contiene la info de las pestanas
