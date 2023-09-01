@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Product } from 'src/app/models/products.interface';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -10,7 +10,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductsBreakfastComponent implements OnInit {
   constructor(private service: ProductsService) { }
   @Output() productAdded = new EventEmitter<Product>();
-
+  @Input() activeTab = '';
 
   productList: Product[] = [];
 
@@ -22,7 +22,8 @@ export class ProductsBreakfastComponent implements OnInit {
     this.service.getProducts().subscribe((data) => {
       console.log(data);
       // Para que sólo se muestre el desayuno, filtro por type la data.
-      this.productList = data.filter(product => product.type === 'Desayuno');
+      this.productList = data.filter(product => product.type === this.activeTab)
+      console.log(this.productList.filter(product => product.type === this.activeTab), this.activeTab);
     })
   }
 

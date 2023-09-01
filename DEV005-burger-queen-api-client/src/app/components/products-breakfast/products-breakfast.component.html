@@ -1,6 +1,6 @@
 <div class="menu-container">
   <div class="product-div" *ngFor="let product of productList">
-    <div class="product-info">
+    <div class="product-info" *ngIf="product.type === activeTab">
       <p class="product-name">{{ product.name }}</p>
       <p class="product-price">$ {{ product.price }}</p>
     </div>
