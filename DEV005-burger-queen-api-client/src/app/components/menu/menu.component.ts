@@ -3,11 +3,11 @@ import { Product } from 'src/app/models/products.interface';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
-  selector: 'app-products-breakfast',
-  templateUrl: './products-breakfast.component.html',
-  styleUrls: ['./products-breakfast.component.css']
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.css']
 })
-export class ProductsBreakfastComponent implements OnInit {
+export class MenuComponent implements OnInit {
   constructor(private service: ProductsService) { }
   @Output() productAdded = new EventEmitter<Product>();
   @Input() activeTabInMenu = '';
@@ -15,10 +15,10 @@ export class ProductsBreakfastComponent implements OnInit {
   productList: Product[] = [];
 
   ngOnInit(): void {
-    this.showBreakfastProducts();
+    this.showProducts();
   }
 
-  showBreakfastProducts() {
+  showProducts() {
     this.service.getProducts().subscribe((data) => {
       this.productList = data.filter(product => product.type === this.activeTabInMenu);
     })

@@ -10,7 +10,7 @@ import { OrderProductService } from 'src/app/services/orderProduct.service'; // 
 })
 export class WaiterComponent {
   selectedProduct: Product[] = [];
-  activeTab = 'Almuerzo';
+  activeTab = 'Desayuno';
   tabMenu: tabButton[] = [
     { name: 'Desayuno', label: 'Desayunos' },
     { name: 'Almuerzo', label: 'Almuerzos/Cenas' }

@@ -3,10 +3,10 @@
 <app-tab-bar [activeTabInTabComponent]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
   <div class="divMenuAndOrder">
     <div *ngIf="activeTab === 'Desayuno'">
-      <app-products-breakfast [activeTabInMenu]="activeTab" (productAdded)="onProductAdded($event)"></app-products-breakfast>
+      <app-menu [activeTabInMenu]="activeTab" (productAdded)="onProductAdded($event)"></app-menu>
     </div>
     <div *ngIf="activeTab === 'Almuerzo'">
-      <app-products-breakfast [activeTabInMenu]="activeTab" (productAdded)="onProductAdded($event)"></app-products-breakfast>
+      <app-menu [activeTabInMenu]="activeTab" (productAdded)="onProductAdded($event)"></app-menu>
     </div>
     <app-orders [productOrderList]="selectedProduct"> </app-orders>
   </div>
