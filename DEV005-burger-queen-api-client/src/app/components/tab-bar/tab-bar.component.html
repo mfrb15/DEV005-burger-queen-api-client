@@ -5,10 +5,10 @@
   <!-- {{ tab.label }} muestra el texto de la etiqueta de la pestaña en el botón. -->
   <!-- <div class="tab-indicator" *ngIf="activeTab === tab.name"></div> muestra la barra indicadora debajo de la pestaña activa. -->
   <div class="tab-button-div" *ngFor="let tab of tabMenu">
-    <button class="tab-button" [class.active]="activeTab === tab.name" (click)="openTab(tab.name)">
+    <button class="tab-button" [class.active]="activeTabInTabComponent === tab.name" (click)="openTab(tab.name)">
       {{ tab.label }}
     </button>
-    <div class="tab-indicator" *ngIf="activeTab === tab.name"></div>
+    <div class="tab-indicator" *ngIf="activeTabInTabComponent === tab.name"></div>
   </div>
 </div>
 <ng-content></ng-content>

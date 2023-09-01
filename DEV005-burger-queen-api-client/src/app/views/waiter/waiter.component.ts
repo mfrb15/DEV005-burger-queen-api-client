@@ -10,7 +10,7 @@ import { OrderProductService } from 'src/app/services/orderProduct.service'; // 
 })
 export class WaiterComponent {
   selectedProduct: Product[] = [];
-  activeTab = 'Desayuno';
+  activeTab = 'Almuerzo';
   tabMenu: tabButton[] = [
     { name: 'Desayuno', label: 'Desayunos' },
     { name: 'Almuerzo', label: 'Almuerzos/Cenas' }
@@ -19,14 +19,10 @@ export class WaiterComponent {
   constructor(private service: OrderProductService) {} // Inyecta el servicio
 
   onProductAdded(product: Product) {
-    console.log( product, 'ahora si')
     this.selectedProduct.push(product);
-    // aquí hay que incluir la lógica para ver si es que en caso de existir un producto ya en el array, cambie la lógica.
-    // this.createOrder(); //FALTABA LLAMAR A LA FUNCION DESDE WAITER COMPONENT Y NO DESDE EL BUTTON
   }
 
   createOrder() {
-    // Llama al método postOrder del servicio para crear la orden con los productos agregados
     this.service.postOrder().subscribe((data) => {
       console.log(data);
     });
@@ -34,33 +30,5 @@ export class WaiterComponent {
 
   onTabChange(tabName: string) {
     this.activeTab = tabName;
-    // filtrar array de productos según el tabName elegidos
   }
 }
-
-
-// import { Component } from '@angular/core';
-// import { tabButton } from 'src/app/models/products.interface';
-
-
-// @Component({
-//   selector: 'app-waiter',
-//   templateUrl: './waiter.component.html',
-//   styleUrls: ['./waiter.component.css']
-// })
-// export class WaiterComponent {
-
-//   activeTab = 'breakfast';
-//   tabMenu: tabButton[] = [ // Array de objetos que contiene la info de las pestanas
-//     { name: 'breakfast', label: 'Desayunos' },
-//     { name: 'lunch-dinner', label: 'Almuerzos/Cenas' }
-//   ];
-
-//   onTabChange(tabName: string) {
-//     this.activeTab = tabName;
-//   }
-// }
-
-
-
-

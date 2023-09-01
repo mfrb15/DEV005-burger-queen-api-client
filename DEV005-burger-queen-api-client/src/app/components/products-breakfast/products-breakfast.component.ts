@@ -10,7 +10,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductsBreakfastComponent implements OnInit {
   constructor(private service: ProductsService) { }
   @Output() productAdded = new EventEmitter<Product>();
-  @Input() activeTab = '';
+  @Input() activeTabInMenu = '';
 
   productList: Product[] = [];
 
@@ -20,15 +20,11 @@ export class ProductsBreakfastComponent implements OnInit {
 
   showBreakfastProducts() {
     this.service.getProducts().subscribe((data) => {
-      console.log(data);
-      // Para que sólo se muestre el desayuno, filtro por type la data.
-      this.productList = data.filter(product => product.type === this.activeTab)
-      console.log(this.productList.filter(product => product.type === this.activeTab), this.activeTab);
+      this.productList = data.filter(product => product.type === this.activeTabInMenu);
     })
   }
 
   addToOrder(product: Product){
-    console.log(product, 'Funciona el boton')
     this.productAdded.emit(product);
   }
 }
