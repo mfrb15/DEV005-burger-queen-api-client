@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { ServicesService } from './services.service';
+import { UserService } from './users.service';
 
-fdescribe('ServicesService', () => {
-  let service: ServicesService;
+fdescribe('UserService', () => {
+  let service: UserService;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],  // Configura el módulo de pruebas con el HttpClientTestingModule
     });
-    service = TestBed.inject(ServicesService); // Obtiene una instancia del servicio inyectando TestBed
+    service = TestBed.inject(UserService); // Obtiene una instancia del servicio inyectando TestBed
     httpTestingController = TestBed.inject(HttpTestingController); // Obtiene el controlador de pruebas HTTP
   });
 

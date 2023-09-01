@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Product } from 'src/app/models/products.interface';
-import { ServicesService } from 'src/app/services/services.service';
-import { OnInit } from '@angular/core';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-products-breakfast',
   templateUrl: './products-breakfast.component.html',
   styleUrls: ['./products-breakfast.component.css']
 })
-export class ProductsBreakfastComponent implements OnInit{
-  constructor(private service: ServicesService) {}
+export class ProductsBreakfastComponent implements OnInit {
+  constructor(private service: ProductsService) { }
+  @Output() productAdded = new EventEmitter<Product>();
+  @Input() activeTabInMenu = '';
 
   productList: Product[] = [];
 
@@ -17,17 +18,13 @@ export class ProductsBreakfastComponent implements OnInit{
     this.showBreakfastProducts();
   }
 
-  showByName(product: Product, name: string): boolean {
-    return product.name.includes(name);
-  }
-
-
   showBreakfastProducts() {
     this.service.getProducts().subscribe((data) => {
-      console.log(data);
-      // Para que sólo se muestre el desayuno, filtro por type la data.
-      this.productList = data.filter(product => product.type === 'Desayuno');
+      this.productList = data.filter(product => product.type === this.activeTabInMenu);
     })
   }
 
+  addToOrder(product: Product){
+    this.productAdded.emit(product);
+  }
 }

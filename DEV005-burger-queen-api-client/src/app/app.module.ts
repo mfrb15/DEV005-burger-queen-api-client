@@ -22,6 +22,7 @@ import { InputClientComponent } from './components/input-client/input-client.com
 import { ProductsBreakfastComponent } from './components/products-breakfast/products-breakfast.component';
 import { ProductsLunchComponent } from './components/products-lunch/products-lunch.component';
 import { ButtonAddComponent } from './components/button-add/button-add.component';
+import { ProductsOrderComponent } from './components/products-order/products-order.component';
 
 @NgModule({
   schemas: [
@@ -42,6 +43,7 @@ import { ButtonAddComponent } from './components/button-add/button-add.component
     ProductsBreakfastComponent,
     ProductsLunchComponent,
     ButtonAddComponent,
+    ProductsOrderComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from 'src/app/models/products.interface';
-import { ServicesService } from 'src/app/services/services.service';
+import { ProductsService } from 'src/app/services/products.service';
 import { OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./products-lunch.component.css']
 })
 export class ProductsLunchComponent implements OnInit {
-  constructor(private service: ServicesService) {}
+  constructor(private service: ProductsService) {}
 
   productList: Product[] = [];
 
@@ -18,9 +18,9 @@ export class ProductsLunchComponent implements OnInit {
     this.showLunchProducts();
   }
 
-  showByName(product: Product, category: string): boolean {
-    return product.name.includes(category);
-  }
+  // showByName(product: Product, category: string): boolean {
+  //   return product.name.includes(category);
+  // }
 
   showLunchProducts() {
     this.service.getProducts().subscribe((data) => {
@@ -28,5 +28,5 @@ export class ProductsLunchComponent implements OnInit {
       this.productList = data.filter(product => product.type === 'Almuerzo');
     })
   }
-
 }
+
