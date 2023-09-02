@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Product } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 // import { Order } from 'src/app/models/products.interface';
@@ -27,6 +27,6 @@ export class OrdersComponent implements OnChanges {
 
   onProductAdded(product: Product) {
     console.log(product, 'llego la info al padre')
-    //this.selectedProduct.push(product);
+    this.productOrderList.push(product);
   }
 }

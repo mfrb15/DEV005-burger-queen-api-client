@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 
@@ -9,16 +9,23 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
 })
 export class ProductsOrderComponent {
   constructor(private service: OrderProductService) { }
-@Input() products: Product[] = [];
-createOrder() {
-  this.service.postOrder().subscribe((data) => {
-    console.log(data);
-  })
-}
+  @Output() productAdded = new EventEmitter<Product>();
+  @Input() products: Product[] = [];
 
-clearOrder() {
-  this.products = [];
-}
-// hacer una funcion que conecte el boton con este componente
+  addToOrder(product: Product) {
+    console.log(product);
+    this.productAdded.emit(product);
+  }
+
+  createOrder() {
+    this.service.postOrder().subscribe((data) => {
+      console.log(data);
+    })
+  }
+
+  clearOrder() {
+    this.products = [];
+  }
+  // hacer una funcion que conecte el boton con este componente
 }
 
