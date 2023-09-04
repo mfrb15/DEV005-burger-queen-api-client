@@ -10,6 +10,7 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnChanges {
+  @Input() clientName = '';
   @Input() productOrderList: ProductInOrder[] = [];
   constructor(private service: OrderProductService) { }
 
