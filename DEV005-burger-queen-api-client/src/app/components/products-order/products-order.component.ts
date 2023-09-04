@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product } from 'src/app/models/products.interface';
+import { Product, ProductInOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 
 @Component({
@@ -9,16 +9,24 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
 })
 export class ProductsOrderComponent {
   constructor(private service: OrderProductService) { }
-  @Output() productAdded = new EventEmitter<Product>();
-  @Input() products: Product[] = [];
+  @Output() productAdded = new EventEmitter<ProductInOrder>();
+  @Input() products: ProductInOrder[] = [];
 
-  addToOrder(product: Product) {
+  addToOrder(product: ProductInOrder) {
     console.log(product);
     this.productAdded.emit(product);
   }
 
   removeProduct(index: number) {
     this.products.splice(index, 1);
+  }
+
+  decrementProduct(index: number){
+    if(this.products[index].qty > 1){
+      this.products[index].qty = (this.products[index].qty || 0) - 1;
+    } else {
+      this.removeProduct(index);
+    }
   }
 
   createOrder() {

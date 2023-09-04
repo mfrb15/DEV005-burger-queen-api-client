@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { tabButton } from 'src/app/models/products.interface';
+import { ProductInOrder, tabButton } from 'src/app/models/products.interface';
 import { Product } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service'; // Importa el servicio adecuado
 
@@ -9,7 +9,7 @@ import { OrderProductService } from 'src/app/services/orderProduct.service'; // 
   styleUrls: ['./waiter.component.css']
 })
 export class WaiterComponent {
-  selectedProduct: Product[] = [];
+  selectedProduct: ProductInOrder[] = [];
   activeTab = 'Desayuno';
   tabMenu: tabButton[] = [
     { name: 'Desayuno', label: 'Desayunos' },
@@ -18,7 +18,7 @@ export class WaiterComponent {
 
   constructor(private service: OrderProductService) {} // Inyecta el servicio
 
-  onProductAdded(product: Product) {
+  onProductAdded(product: ProductInOrder) {
     this.selectedProduct.push(product);
   }
 

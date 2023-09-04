@@ -4,8 +4,12 @@ export interface Product {
   price: number,
   image: string,
   type: string,
-  category?: string,
   dateEntry: string,
+}
+
+export interface ProductInOrder {
+  qty: number,
+  product: Product,
 }
 
 export interface tabButton {
