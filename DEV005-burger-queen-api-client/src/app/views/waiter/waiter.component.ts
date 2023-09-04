@@ -15,8 +15,9 @@ export class WaiterComponent {
     { name: 'Desayuno', label: 'Desayunos' },
     { name: 'Almuerzo', label: 'Almuerzos/Cenas' }
   ];
+  clientName = '';
 
-  constructor(private service: OrderProductService) {} // Inyecta el servicio
+  constructor(private service: OrderProductService) { } // Inyecta el servicio
 
   onProductAdded(product: Product) {
     this.selectedProduct.push(product);
@@ -30,5 +31,10 @@ export class WaiterComponent {
 
   onTabChange(tabName: string) {
     this.activeTab = tabName;
+  }
+
+  OnUpdateName(name: string){
+    console.log(this.clientName = name, 'Llego el nombre')
+    this.clientName = name;
   }
 }
