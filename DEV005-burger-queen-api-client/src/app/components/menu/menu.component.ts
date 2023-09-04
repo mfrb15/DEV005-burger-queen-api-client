@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { Product } from 'src/app/models/products.interface';
+import { Product, ProductInOrder } from 'src/app/models/products.interface';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -9,10 +9,11 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class MenuComponent implements OnInit {
   constructor(private service: ProductsService) { }
-  @Output() productAdded = new EventEmitter<Product>();
+  @Output() productAdded = new EventEmitter<ProductInOrder>();
   @Input() activeTabInMenu = '';
 
   productList: Product[] = [];
+  order: ProductInOrder[] = [];
 
   ngOnInit(): void {
     this.showProducts();
@@ -25,6 +26,11 @@ export class MenuComponent implements OnInit {
   }
 
   addToOrder(product: Product){
-    this.productAdded.emit(product);
+    const order: ProductInOrder = {
+      qty: 1,
+      product: product,
+    };
+
+    this.productAdded.emit(order);
   }
 }
