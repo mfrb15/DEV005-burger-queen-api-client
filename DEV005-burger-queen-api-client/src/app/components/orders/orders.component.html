@@ -7,6 +7,6 @@
     <p>Precio</p>
   </div>
   <div class="productsOrder">
-    <app-products-order [products]="productOrderList"> </app-products-order>
+    <app-products-order [products]="productOrderList" (productAdded)="onProductClicked($event)"> </app-products-order>
   </div>
 </div>

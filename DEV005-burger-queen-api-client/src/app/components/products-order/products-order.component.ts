@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Product } from 'src/app/models/products.interface';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ProductInOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 
 @Component({
@@ -9,16 +9,35 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
 })
 export class ProductsOrderComponent {
   constructor(private service: OrderProductService) { }
-@Input() products: Product[] = [];
-createOrder() {
-  this.service.postOrder().subscribe((data) => {
-    console.log(data);
-  })
-}
+  @Output() productAdded = new EventEmitter<ProductInOrder>();
+  @Input() products: ProductInOrder[] = [];
 
-clearOrder() {
-  this.products = [];
-}
-// hacer una funcion que conecte el boton con este componente
+  addToOrder(product: ProductInOrder) {
+    console.log(product);
+    this.productAdded.emit(product);
+  }
+
+  removeProduct(index: number) {
+    this.products.splice(index, 1);
+  }
+
+  decrementProduct(index: number){
+    if(this.products[index].qty > 1){
+      this.products[index].qty = (this.products[index].qty || 0) - 1;
+    } else {
+      this.removeProduct(index);
+    }
+  }
+
+  createOrder() {
+    this.service.postOrder().subscribe((data) => {
+      console.log(data);
+    })
+  }
+
+  clearOrder() {
+    this.products = [];
+  }
+  // hacer una funcion que conecte el boton con este componente
 }
 

@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/products.interface';
+import { Component, Input, OnChanges } from '@angular/core';
+import { ProductInOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 // import { Order } from 'src/app/models/products.interface';
 
@@ -10,23 +10,40 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnChanges {
-  @Input() productOrderList: Product[] = [];
+  @Input() productOrderList: ProductInOrder[] = [];
   constructor(private service: OrderProductService) { }
 
   ngOnChanges(): void {
     console.log(this.productOrderList);
   }
-  // selectedProduct: Product[] = [];
 
-// productOrderList: Product [] = [];
   createOrder() {
     this.service.postOrder().subscribe((data) => {
       console.log(data);
     })
   }
 
-  onProductAdded(product: Product) {
-    console.log(product, 'llego la info al padre')
-    //this.selectedProduct.push(product);
+  onProductAdded(product: ProductInOrder) {
+    this.productOrderList.push(product);
   }
+
+  onProductClicked(productInOrder: ProductInOrder) {
+    const index = this.productOrderList.findIndex(item => item.product.name === productInOrder.product.name);
+    if (index !== -1) {
+      this.productOrderList[index].qty = (this.productOrderList[index].qty + 1)
+    } else {
+      this.productOrderList.push({
+        qty: 1,
+        product: {
+          id: productInOrder.product.id,
+          name: productInOrder.product.name,
+          price: productInOrder.product.price,
+          image: productInOrder.product.image,
+          type: productInOrder.product.type,
+          dateEntry: productInOrder.product.dateEntry,
+        }
+      })
+    }
+  }
+
 }
