@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { Product, ProductInOrder } from 'src/app/models/products.interface';
+import { ProductInOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 // import { Order } from 'src/app/models/products.interface';
 
@@ -43,12 +43,6 @@ export class OrdersComponent implements OnChanges {
           dateEntry: productInOrder.product.dateEntry,
         }
       })
-    }
-  }
-
-  decrementProduct(index: number){
-    if(this.productOrderList[index].qty >= 2){
-      this.productOrderList[index].qty = (this.productOrderList[index].qty || 0) - 1;
     }
   }
 

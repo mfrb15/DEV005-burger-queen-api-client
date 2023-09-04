@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ProductInOrder, tabButton } from 'src/app/models/products.interface';
-import { Product } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service'; // Importa el servicio adecuado
 
 @Component({
@@ -9,7 +8,7 @@ import { OrderProductService } from 'src/app/services/orderProduct.service'; // 
   styleUrls: ['./waiter.component.css']
 })
 export class WaiterComponent {
-  selectedProduct: ProductInOrder[] = [];
+  productOrderList: ProductInOrder[] = [];
   activeTab = 'Desayuno';
   tabMenu: tabButton[] = [
     { name: 'Desayuno', label: 'Desayunos' },
@@ -19,7 +18,26 @@ export class WaiterComponent {
   constructor(private service: OrderProductService) {} // Inyecta el servicio
 
   onProductAdded(product: ProductInOrder) {
-    this.selectedProduct.push(product);
+    this.productOrderList.push(product);
+  }
+
+  onProductClicked(productInOrder: ProductInOrder) {
+    const index = this.productOrderList.findIndex(item => item.product.name === productInOrder.product.name);
+    if (index !== -1) {
+      this.productOrderList[index].qty = (this.productOrderList[index].qty + 1)
+    } else {
+      this.productOrderList.push({
+        qty: 1,
+        product: {
+          id: productInOrder.product.id,
+          name: productInOrder.product.name,
+          price: productInOrder.product.price,
+          image: productInOrder.product.image,
+          type: productInOrder.product.type,
+          dateEntry: productInOrder.product.dateEntry,
+        }
+      })
+    }
   }
 
   createOrder() {
