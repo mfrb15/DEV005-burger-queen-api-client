@@ -17,6 +17,10 @@ export class ProductsOrderComponent {
     this.productAdded.emit(product);
   }
 
+  removeProduct(index: number) {
+    this.products.splice(index, 1);
+  }
+
   createOrder() {
     this.service.postOrder().subscribe((data) => {
       console.log(data);
