@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/models/products.interface';
-import { CommunicationServiceService } from 'src/app/services/communication-service.service';
-
+import { OrdersService } from 'src/app/services/orders.service';
+// Paso 3.. el paso 4 esta en WAITER.HTML
 @Component({
   selector: 'app-cook',
   templateUrl: './cook.component.html',
@@ -10,16 +10,14 @@ import { CommunicationServiceService } from 'src/app/services/communication-serv
 export class CookComponent implements OnInit {
   orders: Order[] = [];
 
-  constructor(private communicationService: CommunicationServiceService) {
-    // lo suscribimos al observable orders$ para recibir actualizaciones en tiempo real de las ordenes
-    this.communicationService.orders$.subscribe(orders => {
-      this.orders = orders;
-    })
-  }
-
-  ngOnInit() {
+  constructor(private ordersService: OrdersService) {
+    // Obtener la lista de ordenes pendientes
+    this.orders = this.ordersService.getOrders();
     console.log(this.orders, 'Soy cook component');
   }
 
+  ngOnInit(): void {
+    this.orders = this.ordersService.getOrders();
+  }
 }
 

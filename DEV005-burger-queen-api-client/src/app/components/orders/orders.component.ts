@@ -3,7 +3,7 @@ import { ProductInOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 import { Order } from 'src/app/models/products.interface';
 import { OrdersService } from 'src/app/services/orders.service';
-import { CommunicationServiceService } from 'src/app/services/communication-service.service';
+// paso 2 el... el paso 3 esta en cook.component
 
 @Component({
   selector: 'app-orders',
@@ -16,18 +16,22 @@ export class OrdersComponent implements OnChanges {
   @Input() tableNumber = '';
   @Output() orderCreated = new EventEmitter<Order>(); // Evento para notificar la creación de una orden
 
-  constructor(private service: OrderProductService, private ordersService: OrdersService, private communicationService: CommunicationServiceService) { }
+  constructor(private service: OrderProductService, private ordersService: OrdersService) { }
 
   ngOnChanges(): void {
     console.log(this.productOrderList);
   }
 
   createOrder() {
+    // [...this.productOrderList], creas una nueva matriz que es una copia de los elementos de this.productOrderList
+    // pero independiente de ella. De esta manera, puedes modificar productOrderListCopy sin afectar a this.productOrderList.
+
+    const productOrderListCopy = [...this.productOrderList];
     // Crear la orden con los datos actuales
     const newOrder: Order = {
       userId: 1,
       client: this.clientName, // Usar el nombre del cliente actual
-      products: this.productOrderList,
+      products: productOrderListCopy,
       status: 'Pendiente',
       dateEntry: '2022-09-05 10:00:00',
     };
@@ -44,16 +48,9 @@ export class OrdersComponent implements OnChanges {
   }
   // Función para limpiar el formulario
   clearForm() {
-
-    // Obtener las ordenes actualizadas y enviarlas a traves del servicio de comunicacion
-    const updatedOrdes = this.ordersService.getOrders();
-    this.communicationService.updateOrders(updatedOrdes);
-
-      // Limpiar el formulario para ingresar otra orden
     this.clientName = '';
     this.productOrderList = [];
     this.tableNumber = '';
-
   }
 
   onProductClicked(productInOrder: ProductInOrder) {
