@@ -28,7 +28,7 @@ export class OrdersComponent implements OnChanges {
   onProductClicked(productInOrder: ProductInOrder) {
     const index = this.productOrderList.findIndex(item => item.product.name === productInOrder.product.name);
     if (index !== -1) {
-      this.productOrderList[index].qty = (this.productOrderList[index].qty + 1)
+      this.productOrderList[index].qty = (this.productOrderList[index].qty + 1);
     } else {
       this.productOrderList.push({
         qty: 1,
@@ -43,8 +43,19 @@ export class OrdersComponent implements OnChanges {
       })
     }
   }
+
+  calculateTotalOrderPrice(arrayOfProducts: ProductInOrder[]) {
+    return arrayOfProducts.reduce((total, productInOrder) => {
+      return total + productInOrder.qty * productInOrder.product.price;
+    }, 0);
+  }
+
+  get totalOrderPrice() {
+    return this.calculateTotalOrderPrice(this.productOrderList);
+  }
+
   upDateTableInOrder(tableNumber: string) {
-this.tableNumber = tableNumber;
+    this.tableNumber = tableNumber;
   }
 
 }

@@ -12,6 +12,7 @@ export class ProductsOrderComponent {
   @Output() productAdded = new EventEmitter<ProductInOrder>();
   @Input() products: ProductInOrder[] = [];
 
+
   addToOrder(product: ProductInOrder) {
     console.log(product);
     this.productAdded.emit(product);
