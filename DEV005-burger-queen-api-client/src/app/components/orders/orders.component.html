@@ -9,7 +9,8 @@
   <div class="productsOrder">
     <app-products-order [products]="productOrderList" (productAdded)="onProductClicked($event)"> </app-products-order>
   </div>
-  <div>
-    Cliente: {{ clientName }}
+  <div class="clientAndTable">
+    <p>Cliente: {{ clientName }}</p>
+    <p>Mesa: {{ tableNumber }} </p>
   </div>
 </div>
