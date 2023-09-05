@@ -20,12 +20,7 @@ export interface tabButton {
 export interface Order {
   userId: number,
   client: string,
-  products: [
-    {
-      qty: number,
-      product: Product,
-    }
-  ]
+  products: ProductInOrder[]
   status: string,
   dateEntry: string,
 }
