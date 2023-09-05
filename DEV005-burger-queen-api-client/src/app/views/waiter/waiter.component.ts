@@ -15,6 +15,7 @@ export class WaiterComponent {
     { name: 'Almuerzo', label: 'Almuerzos/Cenas' }
   ];
   clientName = '';
+  tableNumber = '';
 
   constructor(private service: OrderProductService) { } // Inyecta el servicio
 
@@ -51,4 +52,9 @@ export class WaiterComponent {
     console.log(this.clientName = name, 'Llego el nombre')
     this.clientName = name;
   }
+  onUpDateTableInOrder(tableNumber: string) {
+    console.log(this.tableNumber = tableNumber, 'llego el numero');
+    this.tableNumber = tableNumber;
+      }
+
 }

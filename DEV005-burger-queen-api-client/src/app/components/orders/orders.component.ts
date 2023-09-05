@@ -12,6 +12,7 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
 export class OrdersComponent implements OnChanges {
   @Input() clientName = '';
   @Input() productOrderList: ProductInOrder[] = [];
+  @Input() tableNumber = '';
   constructor(private service: OrderProductService) { }
 
   ngOnChanges(): void {
@@ -41,6 +42,9 @@ export class OrdersComponent implements OnChanges {
         }
       })
     }
+  }
+  upDateTableInOrder(tableNumber: string) {
+this.tableNumber = tableNumber;
   }
 
 }
