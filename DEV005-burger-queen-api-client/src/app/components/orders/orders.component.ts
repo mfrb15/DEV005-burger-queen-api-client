@@ -43,8 +43,19 @@ export class OrdersComponent implements OnChanges {
       })
     }
   }
+
+  calculateTotalOrderPrice(arrayOfProducts: ProductInOrder[]) {
+    return arrayOfProducts.reduce((total, productInOrder) => {
+      return total + productInOrder.qty * productInOrder.product.price;
+    }, 0);
+  }
+
+  get totalOrderPrice() {
+    return this.calculateTotalOrderPrice(this.productOrderList);
+  }
+
   upDateTableInOrder(tableNumber: string) {
-this.tableNumber = tableNumber;
+    this.tableNumber = tableNumber;
   }
 
 }
