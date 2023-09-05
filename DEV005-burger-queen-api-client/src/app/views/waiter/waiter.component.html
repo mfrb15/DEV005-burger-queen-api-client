@@ -8,7 +8,6 @@
     <div *ngIf="activeTab === 'Almuerzo'">
       <app-menu [activeTabInMenu]="activeTab" (productAdded)="onProductClicked($event)"></app-menu>
     </div>
-    <app-orders  [clientName]="clientName" [productOrderList]="selectedProduct"> </app-orders>
-    <app-orders [productOrderList]="productOrderList"> </app-orders>
+    <app-orders  [clientName]="clientName" [productOrderList]="productOrderList"> </app-orders>
   </div>
 </app-tab-bar>

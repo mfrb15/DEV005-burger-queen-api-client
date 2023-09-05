@@ -18,10 +18,6 @@ export class WaiterComponent {
 
   constructor(private service: OrderProductService) { } // Inyecta el servicio
 
-  onProductAdded(product: ProductInOrder) {
-    this.productOrderList.push(product);
-  }
-
   onProductClicked(productInOrder: ProductInOrder) {
     const index = this.productOrderList.findIndex(item => item.product.name === productInOrder.product.name);
     if (index !== -1) {
