@@ -27,7 +27,7 @@ export class OrdersComponent implements OnChanges {
   onProductClicked(productInOrder: ProductInOrder) {
     const index = this.productOrderList.findIndex(item => item.product.name === productInOrder.product.name);
     if (index !== -1) {
-      this.productOrderList[index].qty = (this.productOrderList[index].qty + 1)
+      this.productOrderList[index].qty = (this.productOrderList[index].qty + 1);
     } else {
       this.productOrderList.push({
         qty: 1,
