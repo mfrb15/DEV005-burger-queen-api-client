@@ -18,6 +18,7 @@ export class OrdersComponent {
   constructor( private ordersService: OrderProductService) { }
 
   createOrder() {
+    console.log('Haciendo click a enviar orden')
     // [...this.productOrderList], creas una nueva matriz que es una copia de los elementos de this.productOrderList
     // pero independiente de ella. De esta manera, puedes modificar productOrderListCopy sin afectar a this.productOrderList.
     const productOrderListCopy = [...this.productOrderList];
@@ -29,23 +30,14 @@ export class OrdersComponent {
       status: 'Pendiente',
       dateEntry: '2022-09-05 10:00:00',
     };
-
     this.ordersService.postOrder(newOrder).subscribe((data) => {
       console.log(data, 'soy ese console');
+
+      this.orderCreated.emit(data);
     })
-    this.orderCreated.emit(newOrder);
-
-    //Limpiar el formulario
-
-    this.clearForm();
-
   }
-  // Función para limpiar el formulario
-  clearForm() {
-    this.clientName = '';
-    this.productOrderList = [];
-    this.tableNumber = '';
-  }
+
+
 
   onProductClicked(productInOrder: ProductInOrder) {
     const index = this.productOrderList.findIndex(item => item.product.name === productInOrder.product.name);

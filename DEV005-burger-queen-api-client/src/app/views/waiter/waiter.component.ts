@@ -14,9 +14,9 @@ export class WaiterComponent {
     { name: 'Desayuno', label: 'Desayunos' },
     { name: 'Almuerzo', label: 'Almuerzos/Cenas' }
   ];
-  clientName = '';
-  tableNumber = '';
-  orders: Order[] = [];
+ clientName = '';
+ tableNumber = '';
+ orders: Order[] = [];
 
   constructor( private ordersService: OrderProductService) { } // Inyecta el servicio
 
@@ -38,12 +38,6 @@ export class WaiterComponent {
       })
     }
   }
-
-  // createOrder() {
-  //   this.service.postOrder().subscribe((data) => {
-  //     console.log(data);
-  //   });
-  // }
 
   onTabChange(tabName: string) {
     this.activeTab = tabName;
