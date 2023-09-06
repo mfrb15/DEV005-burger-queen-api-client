@@ -16,18 +16,14 @@ export class CookComponent implements OnInit {
   }
   getOrders() {
     this.ordersService.getOrders().subscribe((data) => {
+      this.orders = data;
       console.log(data, 'SOY LA DATA DE COOK')
 
     })
   }
 
+}
   // Obtener la lista de ordenes pendientes
   // this.orders = this.ordersService.getOrders();
   // console.log(this.orders, 'Soy cook component');
-
-  receiveNewOrder(order: Order) {
-    this.orders.push(order);
-  }
-
-}
 

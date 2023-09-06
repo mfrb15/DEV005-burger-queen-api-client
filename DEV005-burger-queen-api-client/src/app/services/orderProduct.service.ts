@@ -32,14 +32,14 @@ export class OrderProductService {
   }
   // enviar pasar las ordenes a cocina
 
-  getOrders(): Observable<Order> {
+  getOrders(): Observable<Order[]> {
     const direction = this.apiUrl + 'orders';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('accesToken')}`,
     })
     const options = {headers: headers}
-    return this.http.get<Order>(direction, options)
+    return this.http.get<Order[]>(direction, options)
   }
 
 }
