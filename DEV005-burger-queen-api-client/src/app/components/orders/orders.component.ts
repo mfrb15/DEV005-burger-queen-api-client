@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ProductInOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 import { Order } from 'src/app/models/products.interface';
@@ -10,7 +10,7 @@ import { OrdersService } from 'src/app/services/orders.service';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
-export class OrdersComponent implements OnChanges {
+export class OrdersComponent {
   @Input() clientName = '';
   @Input() productOrderList: ProductInOrder[] = [];
   @Input() tableNumber = '';
@@ -18,14 +18,10 @@ export class OrdersComponent implements OnChanges {
 
   constructor(private service: OrderProductService, private ordersService: OrdersService) { }
 
-  ngOnChanges(): void {
-    console.log(this.productOrderList);
-  }
 
   createOrder() {
     // [...this.productOrderList], creas una nueva matriz que es una copia de los elementos de this.productOrderList
     // pero independiente de ella. De esta manera, puedes modificar productOrderListCopy sin afectar a this.productOrderList.
-
     const productOrderListCopy = [...this.productOrderList];
     // Crear la orden con los datos actuales
     const newOrder: Order = {
@@ -36,15 +32,16 @@ export class OrdersComponent implements OnChanges {
       dateEntry: '2022-09-05 10:00:00',
     };
 
-    // Agregar la orden al servicio de órdenes
-    this.ordersService.addOrder(newOrder);
-
-    // Notificar al componente padre (waiter) que se ha creado una orden
+    this.service.postOrder(newOrder).subscribe((data) => {
+      console.log(data, 'soy ese console');
+    })
     this.orderCreated.emit(newOrder);
 
-    // Limpiar el formulario para ingresar otra orden
+    //Limpiar el formulario
+
     this.clearForm();
-    console.log(newOrder, 'soy la orden enviada')
+
+
   }
   // Función para limpiar el formulario
   clearForm() {

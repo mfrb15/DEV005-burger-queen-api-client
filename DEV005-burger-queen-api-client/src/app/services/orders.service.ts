@@ -10,10 +10,13 @@ export class OrdersService {
 // Definimos la funcion para agregar la orden
   addOrder(order: Order) {
     this.orders.push(order);
+    console.log(this.orders, 'ORDEN AGREGADA')
   }
  // Obtener la lista de ordenes pendientes
   getOrders() {
+
     return this.orders;
+
   }
 }
 

@@ -40,22 +40,22 @@ export class WaiterComponent {
     }
   }
 
-  createOrder() {
-    this.service.postOrder().subscribe((data) => {
-      console.log(data);
-    });
-  }
+  // createOrder() {
+  //   this.service.postOrder().subscribe((data) => {
+  //     console.log(data);
+  //   });
+  // }
 
   onTabChange(tabName: string) {
     this.activeTab = tabName;
   }
 
   OnUpdateName(name: string){
-    console.log(this.clientName = name, 'Llego el nombre')
+    // console.log(this.clientName = name, 'Llego el nombre')
     this.clientName = name;
   }
   onUpDateTableInOrder(tableNumber: string) {
-    console.log(this.tableNumber = tableNumber, 'llego el numero');
+    // console.log(this.tableNumber = tableNumber, 'llego el numero');
     this.tableNumber = tableNumber;
       }
 

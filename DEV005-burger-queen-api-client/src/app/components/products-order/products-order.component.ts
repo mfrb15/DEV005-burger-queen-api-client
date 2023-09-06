@@ -29,15 +29,8 @@ export class ProductsOrderComponent {
     }
   }
 
-  createOrder() {
-    this.service.postOrder().subscribe((data) => {
-      console.log(data);
-    })
-  }
 
-  clearOrder() {
-    this.products = [];
-  }
+
   // hacer una funcion que conecte el boton con este componente
 }
 

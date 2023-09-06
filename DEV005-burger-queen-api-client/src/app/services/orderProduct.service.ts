@@ -24,14 +24,15 @@ clearOrder() {
   private apiUrl = 'http://127.0.0.1:8080/';
   constructor(private http: HttpClient) { }
   // Get order
-  postOrder(): Observable<Order> {
+  postOrder(data: Order): Observable<Order> {
     const direction = this.apiUrl + 'orders';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('accesToken')}`,
     });
-    console.log(this.http.get<Order>(direction, {headers: headers}))
-    return this.http.post<Order>(direction, {headers: headers})
+    const orderInfo = data;
+    const options = {headers: headers  };
+    return this.http.post<Order>(direction,orderInfo, options)
   }
 }
 

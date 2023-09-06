@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { Order } from 'src/app/models/products.interface';
 import { OrdersService } from 'src/app/services/orders.service';
 // Paso 3.. el paso 4 esta en WAITER.HTML
@@ -7,7 +7,7 @@ import { OrdersService } from 'src/app/services/orders.service';
   templateUrl: './cook.component.html',
   styleUrls: ['./cook.component.css']
 })
-export class CookComponent implements OnInit {
+export class CookComponent  {
   orders: Order[] = [];
 
   constructor(private ordersService: OrdersService) {
@@ -15,9 +15,9 @@ export class CookComponent implements OnInit {
     this.orders = this.ordersService.getOrders();
     console.log(this.orders, 'Soy cook component');
   }
-
-  ngOnInit(): void {
-    this.orders = this.ordersService.getOrders();
+  receiveNewOrder(order: Order){
+    this.orders.push(order);
   }
+
 }
 
