@@ -15,7 +15,7 @@ export class OrdersComponent {
   @Input() tableNumber = '';
   @Output() orderCreated = new EventEmitter<Order>(); // Evento para notificar la creación de una orden
 
-  constructor( private ordersService: OrderProductService) { }
+  constructor(private ordersService: OrderProductService) { }
 
   createOrder() {
     console.log('Haciendo click a enviar orden')
@@ -36,6 +36,12 @@ export class OrdersComponent {
       this.orderCreated.emit(data);
     })
   }
+  clearInputs() {
+    this.clientName = '';
+    this.productOrderList = [];
+    this.tableNumber = '';
+  }
+
 
 
 
