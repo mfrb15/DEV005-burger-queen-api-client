@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductInOrder, tabButton, Order } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service'; // Importa el servicio adecuado
-import { OrdersService } from 'src/app/services/orders.service';
 
 @Component({
   selector: 'app-waiter',
@@ -19,7 +18,7 @@ export class WaiterComponent {
   tableNumber = '';
   orders: Order[] = [];
 
-  constructor(private service: OrderProductService, private ordersService: OrdersService) { } // Inyecta el servicio
+  constructor( private ordersService: OrderProductService) { } // Inyecta el servicio
 
   onProductClicked(productInOrder: ProductInOrder) {
     const index = this.productOrderList.findIndex(item => item.product.name === productInOrder.product.name);

@@ -2,7 +2,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ProductInOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 import { Order } from 'src/app/models/products.interface';
-import { OrdersService } from 'src/app/services/orders.service';
 // paso 2 el... el paso 3 esta en cook.component
 
 @Component({
@@ -16,8 +15,7 @@ export class OrdersComponent {
   @Input() tableNumber = '';
   @Output() orderCreated = new EventEmitter<Order>(); // Evento para notificar la creación de una orden
 
-  constructor(private service: OrderProductService, private ordersService: OrdersService) { }
-
+  constructor( private ordersService: OrderProductService) { }
 
   createOrder() {
     // [...this.productOrderList], creas una nueva matriz que es una copia de los elementos de this.productOrderList
@@ -32,7 +30,7 @@ export class OrdersComponent {
       dateEntry: '2022-09-05 10:00:00',
     };
 
-    this.service.postOrder(newOrder).subscribe((data) => {
+    this.ordersService.postOrder(newOrder).subscribe((data) => {
       console.log(data, 'soy ese console');
     })
     this.orderCreated.emit(newOrder);
@@ -40,7 +38,6 @@ export class OrdersComponent {
     //Limpiar el formulario
 
     this.clearForm();
-
 
   }
   // Función para limpiar el formulario
@@ -73,9 +70,6 @@ export class OrdersComponent {
     this.tableNumber = tableNumber;
   }
 }
-
-
-
 
 
   // createOrder() {
