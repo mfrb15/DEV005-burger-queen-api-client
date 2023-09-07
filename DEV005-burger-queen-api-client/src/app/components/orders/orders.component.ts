@@ -20,14 +20,11 @@ export class OrdersComponent {
   createOrder() {
     console.log('Haciendo click a enviar orden')
     this.clearInputs();
-    // [...this.productOrderList], creas una nueva matriz que es una copia de los elementos de this.productOrderList
-    // pero independiente de ella. De esta manera, puedes modificar productOrderListCopy sin afectar a this.productOrderList.
-    const productOrderListCopy = [...this.productOrderList];
     // Crear la orden con los datos actuales
     const newOrder: Order = {
       userId: 1,
       client: this.clientName, // Usar el nombre del cliente actual
-      products: productOrderListCopy,
+      products: this.productOrderList,
       status: 'Pendiente',
       dateEntry: '2022-09-05 10:00:00',
     };
@@ -40,8 +37,6 @@ export class OrdersComponent {
   clearInputs() {
     this.productOrderList = [];
   }
-
-
 
 
   onProductClicked(productInOrder: ProductInOrder) {
@@ -68,11 +63,6 @@ export class OrdersComponent {
   }
 }
 
-
-  // createOrder() {
-  //   this.service.postOrder().subscribe((data) => {
-  //     console.log(data);
-  //   })
 
 
 

@@ -21,6 +21,10 @@ export class UserService {
     return localStorage.getItem('role');
   }
 
+  getId(): string | null {
+    return localStorage.getItem('id')
+  }
+
   loginByEmail(credentials: Credentials): Observable<LoginResponse> {
     const direction = this.apiUrl + 'login';
     return this.http.post<LoginResponse>(direction, credentials).pipe(
