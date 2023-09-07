@@ -4,10 +4,7 @@ el PASO 5 ESTA EN cook.HTML-->
 <app-input-client (nameChanged)="OnUpdateName($event)" (selectedTable)="onUpDateTableInOrder($event)"></app-input-client>
 <app-tab-bar [activeTabInTabComponent]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
   <div class="divMenuAndOrder">
-    <div *ngIf="activeTab === 'Desayuno'">
-      <app-menu [activeTabInMenu]="activeTab" (productAdded)="onProductClicked($event)"></app-menu>
-    </div>
-    <div *ngIf="activeTab === 'Almuerzo'">
+    <div>
       <app-menu [activeTabInMenu]="activeTab" (productAdded)="onProductClicked($event)"></app-menu>
     </div>
     <app-orders (orderCreated)="onOrderCreated($event)"  [tableNumber]="tableNumber" [clientName]="clientName" [productOrderList]="productOrderList"> </app-orders>
