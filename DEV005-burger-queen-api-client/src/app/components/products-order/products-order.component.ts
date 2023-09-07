@@ -12,7 +12,6 @@ export class ProductsOrderComponent {
   @Output() productAdded = new EventEmitter<ProductInOrder>();
   @Input() products: ProductInOrder[] = [];
 
-
   addToOrder(product: ProductInOrder) {
     console.log(product);
     this.productAdded.emit(product);
@@ -30,15 +29,8 @@ export class ProductsOrderComponent {
     }
   }
 
-  createOrder() {
-    this.service.postOrder().subscribe((data) => {
-      console.log(data);
-    })
-  }
 
-  clearOrder() {
-    this.products = [];
-  }
+
   // hacer una funcion que conecte el boton con este componente
 }
 

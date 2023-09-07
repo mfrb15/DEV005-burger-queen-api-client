@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductInOrder, tabButton } from 'src/app/models/products.interface';
+import { ProductInOrder, tabButton, Order } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service'; // Importa el servicio adecuado
 
 @Component({
@@ -14,10 +14,11 @@ export class WaiterComponent {
     { name: 'Desayuno', label: 'Desayunos' },
     { name: 'Almuerzo', label: 'Almuerzos/Cenas' }
   ];
-  clientName = '';
-  tableNumber = '';
+ clientName = '';
+ tableNumber = '';
+ orders: Order[] = [];
 
-  constructor(private service: OrderProductService) { } // Inyecta el servicio
+  constructor( private ordersService: OrderProductService) { } // Inyecta el servicio
 
   onProductClicked(productInOrder: ProductInOrder) {
     const index = this.productOrderList.findIndex(item => item.product.name === productInOrder.product.name);
@@ -38,23 +39,21 @@ export class WaiterComponent {
     }
   }
 
-  createOrder() {
-    this.service.postOrder().subscribe((data) => {
-      console.log(data);
-    });
-  }
-
   onTabChange(tabName: string) {
     this.activeTab = tabName;
   }
 
   OnUpdateName(name: string){
-    console.log(this.clientName = name, 'Llego el nombre')
+    // console.log(this.clientName = name, 'Llego el nombre')
     this.clientName = name;
   }
   onUpDateTableInOrder(tableNumber: string) {
-    console.log(this.tableNumber = tableNumber, 'llego el numero');
+    // console.log(this.tableNumber = tableNumber, 'llego el numero');
     this.tableNumber = tableNumber;
       }
+
+  onOrderCreated(order: Order) {
+    this.orders.push(order);
+  }
 
 }

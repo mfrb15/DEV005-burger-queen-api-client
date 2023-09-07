@@ -1,2 +1,12 @@
 <app-logo [size]="'small'"></app-logo>
 <h1> cook </h1>
+<div>
+  <ul>
+    <li *ngFor="let order of orders">
+      Cliente: {{ order.client }}
+      Hora de Pedido: {{ order.dateEntry }}
+     Status de pedido:  {{ order.status }}
+    </li>
+  </ul>
+
+</div>
