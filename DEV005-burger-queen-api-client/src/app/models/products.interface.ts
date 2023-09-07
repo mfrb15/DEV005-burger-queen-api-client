@@ -4,11 +4,24 @@ export interface Product {
   price: number,
   image: string,
   type: string,
-  category?: string,
   dateEntry: string,
+}
+
+export interface ProductInOrder {
+  qty: number,
+  product: Product,
 }
 
 export interface tabButton {
   name: string,
   label: string,
 }
+
+export interface Order {
+  userId: number,
+  client: string,
+  products: ProductInOrder[]
+  status: string,
+  dateEntry: string,
+}
+

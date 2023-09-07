@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Credentials, LoginResponse } from '../models/login.interface';
-import { HttpClient, HttpHeaders, } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of} from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Product } from '../models/products.interface';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServicesService {
+export class UserService {
   private apiUrl = 'http://127.0.0.1:8080/';
 
   constructor(private http: HttpClient) { }
@@ -32,14 +32,4 @@ export class ServicesService {
       })
     );
   }
-
-  getProducts(): Observable<Product[]> {
-    const direction = this.apiUrl + 'products';
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('accesToken')}`,
-    });
-    return this.http.get<Product[]>(direction, { headers: headers });
-  }
-
 }

@@ -1,12 +1,15 @@
+<!-- PASO 4... AGREGAMOS EL EVENTO A LA ETIQUETA <app-orders></app-orders>
+el PASO 5 ESTA EN cook.HTML-->
 <app-logo [size]="'small'"></app-logo>
-<app-input-client></app-input-client>
-<app-tab-bar [activeTab]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
-  <div class="tab-content">
-    <div *ngIf="activeTab === 'breakfast'">
-      <app-products-breakfast></app-products-breakfast>
+<app-input-client (nameChanged)="OnUpdateName($event)" (selectedTable)="onUpDateTableInOrder($event)"></app-input-client>
+<app-tab-bar [activeTabInTabComponent]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
+  <div class="divMenuAndOrder">
+    <div *ngIf="activeTab === 'Desayuno'">
+      <app-menu [activeTabInMenu]="activeTab" (productAdded)="onProductClicked($event)"></app-menu>
     </div>
-    <div *ngIf="activeTab === 'lunch-dinner'">
-      <app-products-lunch></app-products-lunch>
+    <div *ngIf="activeTab === 'Almuerzo'">
+      <app-menu [activeTabInMenu]="activeTab" (productAdded)="onProductClicked($event)"></app-menu>
     </div>
+    <app-orders (orderCreated)="onOrderCreated($event)"  [tableNumber]="tableNumber" [clientName]="clientName" [productOrderList]="productOrderList"> </app-orders>
   </div>
 </app-tab-bar>
