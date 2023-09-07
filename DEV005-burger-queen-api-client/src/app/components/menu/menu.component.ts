@@ -26,6 +26,7 @@ export class MenuComponent {
   }
 
   addToOrder(product: Product) {
+    console.log('Se hizo click en el boton menu')
     const order: ProductInOrder = {
       qty: 1,
       product: product,

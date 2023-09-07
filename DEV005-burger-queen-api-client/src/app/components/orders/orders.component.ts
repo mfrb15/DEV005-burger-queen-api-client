@@ -20,17 +20,17 @@ export class OrdersComponent {
 
 
   createOrder() {
-    this.clearInputs();
     const userId = this.getUserId();
+    const productOrderListCopy = [...this.productOrderList];
     // Crear la orden con los datos actuales
     const newOrder: Order = {
       userId: Number(userId),
       client: this.clientName, // Usar el nombre del cliente actual
-      products: this.productOrderList,
+      products: productOrderListCopy,
       status: 'pending',
       dateEntry: new Date(),
     };
-    if (this.clientName.trim() === '' && this.productOrderList.length === 0) {
+    if (this.clientName.trim() === '' || productOrderListCopy.length === 0) {
       this.showError = true;
       console.log('El campo esta vacio');
     } else {
@@ -39,6 +39,7 @@ export class OrdersComponent {
         console.log(data, 'soy ese console');
         this.orderCreated.emit(data);
       })
+      this.clearInputs();
       console.log('El nombre es:', this.clientName);
     }
 
