@@ -54,6 +54,8 @@ export class WaiterComponent {
 
   onOrderCreated(order: Order) {
     this.orders.push(order);
+    this.clientName = '';
+    this.tableNumber = '';
   }
 
 }
