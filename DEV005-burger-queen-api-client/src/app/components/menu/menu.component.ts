@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { Product, ProductInOrder } from 'src/app/models/products.interface';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -7,25 +7,25 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
   constructor(private service: ProductsService) { }
   @Output() productAdded = new EventEmitter<ProductInOrder>();
-  @Input() activeTabInMenu = '';
-
+  private _activeTabInMenu = '';
+  @Input()
+  set activeTabInMenu(value: string) {
+    this._activeTabInMenu = value;
+    this.showProducts();
+  }
   productList: Product[] = [];
   order: ProductInOrder[] = [];
 
-  ngOnInit(): void {
-    this.showProducts();
-  }
-
   showProducts() {
     this.service.getProducts().subscribe((data) => {
-      this.productList = data.filter(product => product.type === this.activeTabInMenu);
+      this.productList = data.filter(product => product.type === this._activeTabInMenu);
     })
   }
 
-  addToOrder(product: Product){
+  addToOrder(product: Product) {
     const order: ProductInOrder = {
       qty: 1,
       product: product,
