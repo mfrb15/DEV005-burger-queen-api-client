@@ -22,6 +22,6 @@ export interface Order {
   client: string,
   products: ProductInOrder[]
   status: string,
-  dateEntry: string,
+  dateEntry: Date,
 }
 

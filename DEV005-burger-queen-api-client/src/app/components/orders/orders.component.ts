@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ProductInOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
+import { UserService } from 'src/app/services/users.service';
 import { Order } from 'src/app/models/products.interface';
 // paso 2 el... el paso 3 esta en cook.component
 
@@ -15,22 +16,24 @@ export class OrdersComponent {
   @Input() tableNumber = '';
   @Output() orderCreated = new EventEmitter<Order>(); // Evento para notificar la creación de una orden
 
-  constructor(private ordersService: OrderProductService) { }
+  constructor(private ordersService: OrderProductService, private userService: UserService) { }
+
 
   createOrder() {
+    const userId = this.getUserId();
+    console.log(userId, 'SOY USER ID')
     console.log('Haciendo click a enviar orden')
     this.clearInputs();
     // Crear la orden con los datos actuales
     const newOrder: Order = {
-      userId: 1,
+      userId: Number(userId),
       client: this.clientName, // Usar el nombre del cliente actual
       products: this.productOrderList,
-      status: 'Pendiente',
-      dateEntry: '2022-09-05 10:00:00',
+      status: 'pending',
+      dateEntry: new Date(),
     };
     this.ordersService.postOrder(newOrder).subscribe((data) => {
       console.log(data, 'soy ese console');
-
       this.orderCreated.emit(data);
     })
   }
@@ -60,6 +63,10 @@ export class OrdersComponent {
 
   upDateTableInOrder(tableNumber: string) {
     this.tableNumber = tableNumber;
+  }
+
+  getUserId() {
+   return this.userService.getId();
   }
 }
 

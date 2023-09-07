@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Credentials, LoginResponse } from '../models/login.interface';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of} from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
@@ -13,16 +13,18 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getToken(): string | null  {
+  getToken(): string | null {
     return localStorage.getItem('accesToken');
   }
 
-  getRole(): string | null  {
+  getRole(): string | null {
     return localStorage.getItem('role');
   }
 
   getId(): string | null {
-    return localStorage.getItem('id')
+    const id = localStorage.getItem('id');
+    console.log(id, 'VALOR DE ID');
+    return id;
   }
 
   loginByEmail(credentials: Credentials): Observable<LoginResponse> {
