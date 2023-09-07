@@ -15,15 +15,13 @@ export class OrdersComponent {
   @Input() productOrderList: ProductInOrder[] = [];
   @Input() tableNumber = '';
   @Output() orderCreated = new EventEmitter<Order>(); // Evento para notificar la creación de una orden
-
+  showError = false;
   constructor(private ordersService: OrderProductService, private userService: UserService) { }
 
 
   createOrder() {
-    const userId = this.getUserId();
-    console.log(userId, 'SOY USER ID')
-    console.log('Haciendo click a enviar orden')
     this.clearInputs();
+    const userId = this.getUserId();
     // Crear la orden con los datos actuales
     const newOrder: Order = {
       userId: Number(userId),
@@ -32,10 +30,18 @@ export class OrdersComponent {
       status: 'pending',
       dateEntry: new Date(),
     };
-    this.ordersService.postOrder(newOrder).subscribe((data) => {
-      console.log(data, 'soy ese console');
-      this.orderCreated.emit(data);
-    })
+    if (this.clientName.trim() === '' && this.productOrderList.length === 0) {
+      this.showError = true;
+      console.log('El campo esta vacio');
+    } else {
+      this.showError = false;
+      this.ordersService.postOrder(newOrder).subscribe((data) => {
+        console.log(data, 'soy ese console');
+        this.orderCreated.emit(data);
+      })
+      console.log('El nombre es:', this.clientName);
+    }
+
   }
   clearInputs() {
     this.productOrderList = [];
@@ -66,7 +72,17 @@ export class OrdersComponent {
   }
 
   getUserId() {
-   return this.userService.getId();
+    return this.userService.getId();
+  }
+
+  calculateTotalOrderPrice(arrayOfProducts: ProductInOrder[]) {
+    return arrayOfProducts.reduce((total, productInOrder) => {
+      return total + productInOrder.qty * productInOrder.product.price;
+    }, 0);
+  }
+
+  get totalOrderPrice() {
+    return this.calculateTotalOrderPrice(this.productOrderList);
   }
 }
 

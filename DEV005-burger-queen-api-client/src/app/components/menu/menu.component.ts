@@ -33,4 +33,5 @@ export class MenuComponent {
 
     this.productAdded.emit(order);
   }
+
 }
