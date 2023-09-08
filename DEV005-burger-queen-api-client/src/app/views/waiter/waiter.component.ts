@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ProductInOrder, tabButton, Order } from 'src/app/models/products.interface';
-import { OrderProductService } from 'src/app/services/orderProduct.service'; // Importa el servicio adecuado
 
 @Component({
   selector: 'app-waiter',
@@ -14,17 +13,19 @@ export class WaiterComponent {
     { name: 'Desayuno', label: 'Desayunos' },
     { name: 'Almuerzo', label: 'Almuerzos/Cenas' }
   ];
- clientName = '';
- tableNumber = '';
- orders: Order[] = [];
-
-  constructor( private ordersService: OrderProductService) { } // Inyecta el servicio
+  clientName = '';
+  tableNumber = '';
+  orders: Order[] = [];
 
   onProductClicked(productInOrder: ProductInOrder) {
+    console.log('onProductClicked se está ejecutando', productInOrder);
     const index = this.productOrderList.findIndex(item => item.product.name === productInOrder.product.name);
     if (index !== -1) {
-      this.productOrderList[index].qty = (this.productOrderList[index].qty + 1)
+      console.log('productOrderList antes de la actualización', this.productOrderList);
+      this.productOrderList[index].qty = (this.productOrderList[index].qty + 1);
+      console.log('productOrderList después de la actualización', this.productOrderList);
     } else {
+      console.log('productOrderList antes de la actualización', this.productOrderList);
       this.productOrderList.push({
         qty: 1,
         product: {
@@ -35,7 +36,8 @@ export class WaiterComponent {
           type: productInOrder.product.type,
           dateEntry: productInOrder.product.dateEntry,
         }
-      })
+      });
+      console.log('productOrderList después de la actualización', this.productOrderList);
     }
   }
 
@@ -43,19 +45,20 @@ export class WaiterComponent {
     this.activeTab = tabName;
   }
 
-  OnUpdateName(name: string){
+  OnUpdateName(name: string) {
     // console.log(this.clientName = name, 'Llego el nombre')
     this.clientName = name;
   }
   onUpDateTableInOrder(tableNumber: string) {
     // console.log(this.tableNumber = tableNumber, 'llego el numero');
     this.tableNumber = tableNumber;
-      }
+  }
 
   onOrderCreated(order: Order) {
     this.orders.push(order);
     this.clientName = '';
     this.tableNumber = '';
+    this.productOrderList = [];
   }
 
 }
