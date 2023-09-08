@@ -19,6 +19,7 @@ export class InputClientComponent {
 
   // Se crea la funcion para cambiar el nombre
   UpdateName() {
+
     this.nameChanged.emit(this.clientName);
   }
 

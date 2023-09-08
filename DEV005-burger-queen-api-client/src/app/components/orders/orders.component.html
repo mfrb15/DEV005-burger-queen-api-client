@@ -13,6 +13,9 @@
     <p>Cliente: {{ clientName }}</p>
     <p>Mesa: {{ tableNumber }} </p>
   </div>
-
+  <div>
+    TOTAL: {{ totalOrderPrice ? totalOrderPrice: 0 }}
+  </div>
+  <div *ngIf="showError" class="error-message">Faltan datos para generar la orden</div>
   <button class="btn-send-order" (click)="createOrder()">Enviar Orden</button>
 </div>
