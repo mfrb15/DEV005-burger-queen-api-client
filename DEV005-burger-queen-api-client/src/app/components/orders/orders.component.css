@@ -1,5 +1,15 @@
-* {
+/* * {
   border: red;
+  border-style: dotted;
+} */
+
+p {
+  height: fit-content;
+  margin: 0px;
+}
+
+.productsOrder {
+  width: 21rem;
 }
 
 .tab-content {
@@ -9,32 +19,35 @@
   justify-content: space-around;
   font-size: 30px;
   color: #005A96;
+  margin: 0px;
 }
 
 .itemAndPrice {
   /* background-color: pink; */
+  width: 22rem;
   color: #005A96;
   display: flex;
   justify-content: space-around;
-  font-size: 23px;
+  font-size: 25px;
 }
 
 .order-div {
   background-color: white;
   border-radius: 10px;
   border: 5px solid #005A96;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  justify-items: center;
   align-items: center;
+  padding: 10px;
 }
 
 .clientAndTable {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   text-align: right;
-  justify-content: space-around;
+  justify-items: space-around;
   color: #005A96;
+  font-size: 23px;
 }
 
 .btn-send-order {
@@ -47,4 +60,5 @@
   font-style: normal;
   font-weight: 400;
   color: #FED236;
+  align-self: center;
 }
