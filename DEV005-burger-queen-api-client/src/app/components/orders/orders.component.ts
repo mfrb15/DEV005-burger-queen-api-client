@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { ProductInOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 import { UserService } from 'src/app/services/users.service';
@@ -11,26 +11,27 @@ import { Order } from 'src/app/models/products.interface';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent {
+
+  constructor(private ordersService: OrderProductService, private userService: UserService, private cdr: ChangeDetectorRef) { }
+
   @Input() clientName = '';
   @Input() productOrderList: ProductInOrder[] = [];
   @Input() tableNumber = '';
   @Output() orderCreated = new EventEmitter<Order>(); // Evento para notificar la creación de una orden
   showError = false;
-  constructor(private ordersService: OrderProductService, private userService: UserService) { }
-
 
   createOrder() {
     const userId = this.getUserId();
-    const productOrderListCopy = [...this.productOrderList];
+    // const productOrderListCopy = [...this.productOrderList];
     // Crear la orden con los datos actuales
     const newOrder: Order = {
       userId: Number(userId),
       client: this.clientName, // Usar el nombre del cliente actual
-      products: productOrderListCopy,
+      products: this.productOrderList,
       status: 'pending',
       dateEntry: new Date(),
     };
-    if (this.clientName.trim() === '' || productOrderListCopy.length === 0) {
+    if (this.clientName.trim() === '' || this.productOrderList.length === 0) {
       this.showError = true;
       console.log('El campo esta vacio');
     } else {
@@ -38,16 +39,15 @@ export class OrdersComponent {
       this.ordersService.postOrder(newOrder).subscribe((data) => {
         console.log(data, 'soy ese console');
         this.orderCreated.emit(data);
+        this.clearInputs();
+        this.cdr.detectChanges();
       })
-      this.clearInputs();
-      console.log('El nombre es:', this.clientName);
     }
-
   }
+
   clearInputs() {
     this.productOrderList = [];
   }
-
 
   onProductClicked(productInOrder: ProductInOrder) {
     const index = this.productOrderList.findIndex(item => item.product.name === productInOrder.product.name);
