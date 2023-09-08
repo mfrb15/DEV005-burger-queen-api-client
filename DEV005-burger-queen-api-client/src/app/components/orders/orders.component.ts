@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ProductInOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
+import { UserService } from 'src/app/services/users.service';
 import { Order } from 'src/app/models/products.interface';
 // paso 2 el... el paso 3 esta en cook.component
 
@@ -14,34 +15,38 @@ export class OrdersComponent {
   @Input() productOrderList: ProductInOrder[] = [];
   @Input() tableNumber = '';
   @Output() orderCreated = new EventEmitter<Order>(); // Evento para notificar la creación de una orden
+  showError = false;
+  constructor(private ordersService: OrderProductService, private userService: UserService) { }
 
-  constructor(private ordersService: OrderProductService) { }
 
   createOrder() {
-    console.log('Haciendo click a enviar orden')
-    this.clearInputs();
-    // [...this.productOrderList], creas una nueva matriz que es una copia de los elementos de this.productOrderList
-    // pero independiente de ella. De esta manera, puedes modificar productOrderListCopy sin afectar a this.productOrderList.
+    const userId = this.getUserId();
     const productOrderListCopy = [...this.productOrderList];
     // Crear la orden con los datos actuales
     const newOrder: Order = {
-      userId: 1,
+      userId: Number(userId),
       client: this.clientName, // Usar el nombre del cliente actual
       products: productOrderListCopy,
-      status: 'Pendiente',
-      dateEntry: '2022-09-05 10:00:00',
+      status: 'pending',
+      dateEntry: new Date(),
     };
-    this.ordersService.postOrder(newOrder).subscribe((data) => {
-      console.log(data, 'soy ese console');
+    if (this.clientName.trim() === '' || productOrderListCopy.length === 0) {
+      this.showError = true;
+      console.log('El campo esta vacio');
+    } else {
+      this.showError = false;
+      this.ordersService.postOrder(newOrder).subscribe((data) => {
+        console.log(data, 'soy ese console');
+        this.orderCreated.emit(data);
+      })
+      this.clearInputs();
+      console.log('El nombre es:', this.clientName);
+    }
 
-      this.orderCreated.emit(data);
-    })
   }
   clearInputs() {
     this.productOrderList = [];
   }
-
-
 
 
   onProductClicked(productInOrder: ProductInOrder) {
@@ -66,13 +71,22 @@ export class OrdersComponent {
   upDateTableInOrder(tableNumber: string) {
     this.tableNumber = tableNumber;
   }
+
+  getUserId() {
+    return this.userService.getId();
+  }
+
+  calculateTotalOrderPrice(arrayOfProducts: ProductInOrder[]) {
+    return arrayOfProducts.reduce((total, productInOrder) => {
+      return total + productInOrder.qty * productInOrder.product.price;
+    }, 0);
+  }
+
+  get totalOrderPrice() {
+    return this.calculateTotalOrderPrice(this.productOrderList);
+  }
 }
 
-
-  // createOrder() {
-  //   this.service.postOrder().subscribe((data) => {
-  //     console.log(data);
-  //   })
 
 
 
