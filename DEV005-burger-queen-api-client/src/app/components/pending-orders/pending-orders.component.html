@@ -7,7 +7,7 @@
       Hora de Ingreso: {{ order.dateEntry }}
       Estado del pedido:  {{ order.status }}
     </li>
-    <button (click)="markAsReady(order)">Listo</button>
+    <button (click)="markAsReady(order.id)">Listo</button>
   </ul>
 
 </div>

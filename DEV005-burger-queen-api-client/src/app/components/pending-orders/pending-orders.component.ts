@@ -21,8 +21,8 @@ export class PendingOrdersComponent implements OnInit {
 
   addNewOrders() {
     this.ordersService.getOrders().subscribe((data) => {
-      console.log(data);
       this.pendingOrders = data.filter(order => order.status === 'pending');
+      console.log(data);
       this.cdr.markForCheck();
     });
   }
@@ -34,14 +34,16 @@ export class PendingOrdersComponent implements OnInit {
     });
   }
 
-  markAsReady(order: ResponseOrder) {
-    console.log('Botón marcar pedido listo', order);
-    const index = this.pendingOrders.findIndex(item => item.id === order.id);
+  markAsReady(id: number) {
+    console.log('Botón marcar pedido listo');
+    const index = this.pendingOrders.findIndex(item => item.id === id);
     if (index !== -1) {
-      // Elimina el elemento del array usando splice()
-      this.pendingOrders.splice(index, 1);
-      order.status = 'ready';
-      this.orderReady.emit(order);
+      this.ordersService.processOrder(id).subscribe((data) => {
+        this.pendingOrders.splice(index, 1);
+        this.pendingOrders[index].status = 'ready';
+        this.orderReady.emit(data);
+      })
+
     }
   }
 

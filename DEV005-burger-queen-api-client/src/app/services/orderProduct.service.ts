@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, timer } from 'rxjs';
 import { switchMap } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Order, ResponseOrder } from '../models/products.interface';
+import { Order, ProcessedOrder, ResponseOrder } from '../models/products.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class OrderProductService {
     const orderInfo =  data;
     const options = { headers: headers };
 
-    return this.http.post<Order>(direction, orderInfo, options)
+    return this.http.post<Order>(direction, orderInfo, options);
   }
   // enviar pasar las ordenes a cocina
 
@@ -31,13 +31,26 @@ export class OrderProductService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('accesToken')}`,
-    })
-    const options = {headers: headers}
+    });
+    const options = {headers: headers};
 
     return timer(0, this.pollingInterval).pipe(
       switchMap(() => this.http.get<ResponseOrder[]>(direction, options))
-    )
+    );
   }
 
+  processOrder(id: number): Observable<ProcessedOrder> {
+    const direction = this.apiUrl + `orders/${id}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('accesToken')}`,
+    });
+    const orderInfo = {
+      status: 'ready',
+      dateProcessed: new Date(),
+    }
+    const options = { headers: headers };
+    return this.http.patch<ProcessedOrder>(direction, orderInfo, options);
+  }
 }
 
