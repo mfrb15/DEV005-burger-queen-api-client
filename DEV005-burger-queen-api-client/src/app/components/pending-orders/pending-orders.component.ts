@@ -22,7 +22,7 @@ export class PendingOrdersComponent implements OnInit {
     this.ordersService.getOrders().subscribe((data) => {
       this.pendingOrders = data;
       this.cdr.markForCheck();
-    })
+    });
   }
 
   updateOrdersView(): void {
