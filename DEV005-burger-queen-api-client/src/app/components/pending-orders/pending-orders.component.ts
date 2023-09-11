@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, Output, EventEmitter} from '@angular/core';
-import { Order } from 'src/app/models/products.interface';
+import { ResponseOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 
 
@@ -9,8 +9,8 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
   styleUrls: ['./pending-orders.component.css']
 })
 export class PendingOrdersComponent implements OnInit {
-  pendingOrders: Order[] = [];
-  @Output() orderReady = new EventEmitter<Order>();
+  pendingOrders: ResponseOrder[] = [];
+  @Output() orderReady = new EventEmitter<ResponseOrder>();
 
   constructor(private ordersService: OrderProductService, private cdr: ChangeDetectorRef) {}
 
@@ -21,7 +21,8 @@ export class PendingOrdersComponent implements OnInit {
 
   addNewOrders() {
     this.ordersService.getOrders().subscribe((data) => {
-      this.pendingOrders = data;
+      console.log(data);
+      this.pendingOrders = data.filter(order => order.status === 'pending');
       this.cdr.markForCheck();
     });
   }
@@ -33,9 +34,15 @@ export class PendingOrdersComponent implements OnInit {
     });
   }
 
-  markAsReady(order: Order) {
-    console.log('Botón marcar pedido listo')
-    this.orderReady.emit(order);
+  markAsReady(order: ResponseOrder) {
+    console.log('Botón marcar pedido listo', order);
+    const index = this.pendingOrders.findIndex(item => item.id === order.id);
+    if (index !== -1) {
+      // Elimina el elemento del array usando splice()
+      this.pendingOrders.splice(index, 1);
+      order.status = 'ready';
+      this.orderReady.emit(order);
+    }
   }
 
 }

@@ -21,11 +21,8 @@ export class WaiterComponent {
     console.log('onProductClicked se está ejecutando', productInOrder);
     const index = this.productOrderList.findIndex(item => item.product.name === productInOrder.product.name);
     if (index !== -1) {
-      console.log('productOrderList antes de la actualización', this.productOrderList);
       this.productOrderList[index].qty = (this.productOrderList[index].qty + 1);
-      console.log('productOrderList después de la actualización', this.productOrderList);
     } else {
-      console.log('productOrderList antes de la actualización', this.productOrderList);
       this.productOrderList.push({
         qty: 1,
         product: {

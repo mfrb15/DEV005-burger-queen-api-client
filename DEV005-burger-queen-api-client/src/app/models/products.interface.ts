@@ -25,3 +25,21 @@ export interface Order {
   dateEntry: Date,
 }
 
+export interface ResponseOrder {
+  id: number,
+  userId: number,
+  client: string,
+  products: ProductInOrder[]
+  status: string,
+  dateEntry: Date,
+}
+
+export interface ProcessedOrder {
+  id: number,
+  userId: number,
+  client: string,
+  products: ProductInOrder[]
+  status: string,
+  dateEntry: Date,
+  dateProcessed: Date,
+}
