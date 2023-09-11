@@ -22,6 +22,7 @@ import { InputClientComponent } from './components/input-client/input-client.com
 import { MenuComponent } from './components/menu/menu.component';
 import { ButtonAddComponent } from './components/button-add/button-add.component';
 import { ProductsOrderComponent } from './components/products-order/products-order.component';
+import { PendingOrdersComponent } from './components/pending-orders/pending-orders.component';
 
 @NgModule({
   schemas: [
@@ -42,6 +43,7 @@ import { ProductsOrderComponent } from './components/products-order/products-ord
     MenuComponent,
     ButtonAddComponent,
     ProductsOrderComponent,
+    PendingOrdersComponent,
   ],
   imports: [
     BrowserModule,

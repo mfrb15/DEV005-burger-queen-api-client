@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Order } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 // Paso 3.. el paso 4 esta en WAITER.HTML
@@ -7,20 +7,20 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
   templateUrl: './cook.component.html',
   styleUrls: ['./cook.component.css']
 })
-export class CookComponent implements OnInit {
+export class CookComponent {
   orders: Order[] = [];
 
   constructor(private ordersService: OrderProductService) { }
-  ngOnInit() {
-    this.getOrders();
-  }
-  getOrders() {
-    this.ordersService.getOrders().subscribe((data) => {
-      this.orders = data;
-      console.log(data, 'SOY LA DATA DE COOK')
+  // ngOnInit() {
+  //   this.getOrders();
+  // }
+  // getOrders() {
+  //   this.ordersService.getOrders().subscribe((data) => {
+  //     this.orders = data;
+  //     console.log(data, 'SOY LA DATA DE COOK')
 
-    })
-  }
+  //   })
+  // }
 
 }
   // Obtener la lista de ordenes pendientes
