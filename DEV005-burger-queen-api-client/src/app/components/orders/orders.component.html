@@ -1,6 +1,6 @@
-<div class="resumenPedido">
+<div class="order-div">
   <div class="tab-content">
-    <p>Resumen de pedido </p>
+    <p class="order-p">Resumen del pedido </p>
   </div>
   <div class="itemAndPrice">
     <p>Item</p>
@@ -13,9 +13,9 @@
     <p>Cliente: {{ clientName }}</p>
     <p>Mesa: {{ tableNumber }} </p>
   </div>
-  <div>
+  <div class="clientAndTable">
     TOTAL: {{ totalOrderPrice ? totalOrderPrice: 0 }}
   </div>
   <div *ngIf="showError" class="error-message">Faltan datos para generar la orden</div>
-  <button (click)="createOrder()">Enviar Orden</button>
+  <button class="btn-send-order" (click)="createOrder()">Enviar Orden</button>
 </div>

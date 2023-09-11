@@ -1,6 +1,7 @@
 .product-div {
   display: flex;
   align-items: center;
+  margin: 0px;
 }
 
 p {
@@ -17,16 +18,25 @@ p {
 
 .product-name {
   flex: 1;
-  white-space: nowrap;
+  white-space: wrap;
   /* Evita que el nombre del producto se parta en varias líneas */
   overflow: hidden;
+  font-size: 20px;
   text-overflow: ellipsis;
   /* Agrega puntos suspensivos si el nombre es demasiado largo */
-  margin-left: 5%;
+  /* margin-left: 5%; */
+  width: 25%;
+}
+
+.product-price {
+  width: 20%;
+  font-size: 20px;
+  align-self: flex-start;
 }
 
 
 .divButton {
   width: 80px;
-  margin-left: 10px;
+  display: flex;
+  /* margin-left: 10px; */
 }
