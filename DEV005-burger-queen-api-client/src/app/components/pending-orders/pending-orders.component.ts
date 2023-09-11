@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { Order } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 
@@ -11,18 +11,25 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
 export class PendingOrdersComponent implements OnInit {
   pendingOrders: Order[] = [];
 
-  constructor(private ordersService: OrderProductService) {}
-
+  constructor(private ordersService: OrderProductService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.getOrders();
+    this.addNewOrders();
+    this.updateOrdersView();
   }
 
-  getOrders() {
+  addNewOrders() {
     this.ordersService.getOrders().subscribe((data) => {
       this.pendingOrders = data;
-      console.log(data, 'SOY LA DATA DE COOK')
+      this.cdr.markForCheck();
     })
+  }
+
+  updateOrdersView(): void {
+    this.addNewOrders();
+    this.pendingOrders = this.pendingOrders.slice().sort((a, b) => {
+      return new Date(b.dateEntry).getTime() - new Date(a.dateEntry).getTime();
+    });
   }
 
 }
