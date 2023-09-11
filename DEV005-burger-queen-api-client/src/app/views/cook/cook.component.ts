@@ -8,22 +8,12 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
   styleUrls: ['./cook.component.css']
 })
 export class CookComponent {
-  orders: Order[] = [];
+  readyOrders: Order[] = [];
 
   constructor(private ordersService: OrderProductService) { }
-  // ngOnInit() {
-  //   this.getOrders();
-  // }
-  // getOrders() {
-  //   this.ordersService.getOrders().subscribe((data) => {
-  //     this.orders = data;
-  //     console.log(data, 'SOY LA DATA DE COOK')
 
-  //   })
-  // }
+  onOrdersReady(order: Order) {
+    this.readyOrders.push(order);
+  }
 
 }
-  // Obtener la lista de ordenes pendientes
-  // this.orders = this.ordersService.getOrders();
-  // console.log(this.orders, 'Soy cook component');
-

@@ -1,5 +1,6 @@
 <app-logo [size]="'small'"></app-logo>
-<app-pending-orders></app-pending-orders>
+<app-pending-orders (orderReady)="onOrdersReady($event)"></app-pending-orders>
+<app-orders-ready [readyOrders]="readyOrders"></app-orders-ready>
 <!-- <h1> cook </h1>
 <div>
   <ul>
