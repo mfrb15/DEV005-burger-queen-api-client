@@ -1,0 +1,13 @@
+<p>pending-orders works!</p>
+<div class="pending-orders">
+  <ul *ngFor="let order of pendingOrders">
+    <li>
+      Cliente: {{ order.client }}
+      <!-- buscar cómo indicar cuál mesa es -->
+      Hora de Ingreso: {{ order.dateEntry }}
+      Estado del pedido:  {{ order.status }}
+    </li>
+    <button (click)="markAsReady(order.id)">Listo</button>
+  </ul>
+
+</div>

@@ -1,0 +1,9 @@
+<p>orders-ready works!</p>
+<ul *ngFor="let order of ordersReady">
+  <li>
+    Cliente: {{ order.client }}
+    <!-- buscar cómo indicar cuál mesa es -->
+    Hora de Ingreso: {{ order.dateEntry }}
+    Estado del pedido:  {{ order.status }}
+  </li>
+</ul>
