@@ -10,6 +10,7 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
 export class OrdersReadyComponent implements OnInit {
   // @Input() readyOrders: ResponseOrder[] = [];
   ordersReady: RPOrder[] = [];
+  prepTime = 0;
   constructor(private orderService: OrderProductService) {}
 
   ngOnInit(): void {

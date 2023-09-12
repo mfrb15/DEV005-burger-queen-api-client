@@ -34,7 +34,6 @@ export class WaiterComponent {
           dateEntry: productInOrder.product.dateEntry,
         }
       });
-      console.log('productOrderList después de la actualización', this.productOrderList);
     }
   }
 
