@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductInOrder, tabButton, Order } from 'src/app/models/products.interface';
+import { ProductInOrder, tabButton, NewOrder } from 'src/app/models/products.interface';
 
 @Component({
   selector: 'app-waiter',
@@ -15,7 +15,7 @@ export class WaiterComponent {
   ];
   clientName = '';
   tableNumber = '';
-  orders: Order[] = [];
+  orders: NewOrder[] = [];
 
   onProductClicked(productInOrder: ProductInOrder) {
     console.log('onProductClicked se está ejecutando', productInOrder);
@@ -51,7 +51,7 @@ export class WaiterComponent {
     this.tableNumber = tableNumber;
   }
 
-  onOrderCreated(order: Order) {
+  onOrderCreated(order: NewOrder) {
     this.orders.push(order);
     this.clientName = '';
     this.tableNumber = '';

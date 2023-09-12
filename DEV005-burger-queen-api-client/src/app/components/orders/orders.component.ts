@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angu
 import { ProductInOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 import { UserService } from 'src/app/services/users.service';
-import { Order } from 'src/app/models/products.interface';
+import { NewOrder } from 'src/app/models/products.interface';
 // paso 2 el... el paso 3 esta en cook.component
 
 @Component({
@@ -17,14 +17,14 @@ export class OrdersComponent {
   @Input() clientName = '';
   @Input() productOrderList: ProductInOrder[] = [];
   @Input() tableNumber = '';
-  @Output() orderCreated = new EventEmitter<Order>(); // Evento para notificar la creación de una orden
+  @Output() orderCreated = new EventEmitter<NewOrder>(); // Evento para notificar la creación de una orden
   showError = false;
 
   createOrder() {
     const userId = this.getUserId();
     // const productOrderListCopy = [...this.productOrderList];
     // Crear la orden con los datos actuales
-    const newOrder: Order = {
+    const newOrder: NewOrder = {
       userId: Number(userId),
       client: this.clientName, // Usar el nombre del cliente actual
       products: this.productOrderList,

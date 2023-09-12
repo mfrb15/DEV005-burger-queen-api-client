@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Order } from 'src/app/models/products.interface';
-import { OrderProductService } from 'src/app/services/orderProduct.service';
+import { NewOrder } from 'src/app/models/products.interface';
 // Paso 3.. el paso 4 esta en WAITER.HTML
 @Component({
   selector: 'app-cook',
@@ -8,11 +7,9 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
   styleUrls: ['./cook.component.css']
 })
 export class CookComponent {
-  readyOrders: Order[] = [];
+  readyOrders: NewOrder[] = [];
 
-  constructor(private ordersService: OrderProductService) { }
-
-  onOrdersReady(order: Order) {
+  onOrdersReady(order: NewOrder) {
     this.readyOrders.push(order);
   }
 

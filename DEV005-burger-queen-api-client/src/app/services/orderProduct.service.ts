@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, timer } from 'rxjs';
 import { switchMap } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Order, ProcessedOrder, ResponseOrder } from '../models/products.interface';
+import { NewOrder, ProcessedOrder, RPOrder, ResponseOrder } from '../models/products.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class OrderProductService {
 
   constructor(private http: HttpClient) { }
   // Get order
-  postOrder(data: Order): Observable<Order> {
+  postOrder(data: NewOrder): Observable<ResponseOrder> {
     const direction = this.apiUrl + 'orders';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -22,11 +22,11 @@ export class OrderProductService {
     const orderInfo =  data;
     const options = { headers: headers };
 
-    return this.http.post<Order>(direction, orderInfo, options);
+    return this.http.post<ResponseOrder>(direction, orderInfo, options);
   }
   // enviar pasar las ordenes a cocina
 
-  getOrders(): Observable<ResponseOrder[]> {
+  getOrders(): Observable<RPOrder[]> {
     const direction = this.apiUrl + 'orders';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export class OrderProductService {
     const options = {headers: headers};
 
     return timer(0, this.pollingInterval).pipe(
-      switchMap(() => this.http.get<ResponseOrder[]>(direction, options))
+      switchMap(() => this.http.get<RPOrder[]>(direction, options))
     );
   }
 

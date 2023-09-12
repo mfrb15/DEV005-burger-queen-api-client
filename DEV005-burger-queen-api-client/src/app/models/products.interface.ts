@@ -17,7 +17,7 @@ export interface tabButton {
   label: string,
 }
 
-export interface Order {
+export interface NewOrder {
   userId: number,
   client: string,
   products: ProductInOrder[]
@@ -43,3 +43,5 @@ export interface ProcessedOrder {
   dateEntry: Date,
   dateProcessed: Date,
 }
+
+export type RPOrder = ResponseOrder | ProcessedOrder;

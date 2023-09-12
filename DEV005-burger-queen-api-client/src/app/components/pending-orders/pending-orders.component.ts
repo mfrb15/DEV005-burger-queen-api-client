@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef, Output, EventEmitter} from '@angular/core';
-import { ResponseOrder } from 'src/app/models/products.interface';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { RPOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 
 
@@ -9,10 +9,10 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
   styleUrls: ['./pending-orders.component.css']
 })
 export class PendingOrdersComponent implements OnInit {
-  pendingOrders: ResponseOrder[] = [];
-  @Output() orderReady = new EventEmitter<ResponseOrder>();
+  pendingOrders: RPOrder[] = [];
+  @Output() orderReady = new EventEmitter<RPOrder>();
 
-  constructor(private ordersService: OrderProductService, private cdr: ChangeDetectorRef) {}
+  constructor(private ordersService: OrderProductService) {}
 
   ngOnInit(): void {
     this.addNewOrders();
@@ -22,8 +22,7 @@ export class PendingOrdersComponent implements OnInit {
   addNewOrders() {
     this.ordersService.getOrders().subscribe((data) => {
       this.pendingOrders = data.filter(order => order.status === 'pending');
-      console.log(data);
-      this.cdr.markForCheck();
+      console.log(this.pendingOrders);
     });
   }
 
@@ -40,7 +39,7 @@ export class PendingOrdersComponent implements OnInit {
     if (index !== -1) {
       this.ordersService.processOrder(id).subscribe((data) => {
         this.pendingOrders.splice(index, 1);
-        this.pendingOrders[index].status = 'ready';
+        console.log(data);
         this.orderReady.emit(data);
       })
 
