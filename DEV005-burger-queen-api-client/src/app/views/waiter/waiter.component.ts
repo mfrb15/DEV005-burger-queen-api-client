@@ -42,11 +42,10 @@ export class WaiterComponent {
   }
 
   OnUpdateName(name: string) {
-    // console.log(this.clientName = name, 'Llego el nombre')
     this.clientName = name;
   }
+
   onUpDateTableInOrder(tableNumber: string) {
-    // console.log(this.tableNumber = tableNumber, 'llego el numero');
     this.tableNumber = tableNumber;
   }
 
