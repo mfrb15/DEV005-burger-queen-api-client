@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RPOrder } from 'src/app/models/products.interface';
+import { ProcessedOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
 })
 export class OrdersReadyComponent implements OnInit {
   // @Input() readyOrders: ResponseOrder[] = [];
-  ordersReady: RPOrder[] = [];
+  ordersReady: ProcessedOrder[] = [];
   prepTime = 0;
   constructor(private orderService: OrderProductService) {}
 
@@ -18,7 +18,7 @@ export class OrdersReadyComponent implements OnInit {
   }
 
   getOrderReady() {
-    this.orderService.getOrders().subscribe((data) => {
+    this.orderService.getOrdersReady().subscribe((data) => {
       this.ordersReady = data.filter(order => order.status === 'ready');
       console.log(this.ordersReady);
     })
