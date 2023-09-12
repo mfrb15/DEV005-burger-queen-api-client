@@ -52,5 +52,19 @@ export class OrderProductService {
     const options = { headers: headers };
     return this.http.patch<ProcessedOrder>(direction, orderInfo, options);
   }
+
+  getOrdersReady(): Observable<ProcessedOrder[]> {
+    const direction = this.apiUrl + 'orders';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('accesToken')}`,
+    });
+    const options = {headers: headers};
+
+    return timer(0, this.pollingInterval).pipe(
+      switchMap(() => this.http.get<ProcessedOrder[]>(direction, options))
+    );
+  }
+
 }
 

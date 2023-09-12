@@ -1,13 +1,18 @@
-<p>pending-orders works!</p>
-<div class="pending-orders">
-  <ul *ngFor="let order of pendingOrders">
-    <li>
-      Cliente: {{ order.client }}
-      <!-- buscar cómo indicar cuál mesa es -->
-      Hora de Ingreso: {{ order.dateEntry }}
-      Estado del pedido:  {{ order.status }}
-    </li>
-    <button (click)="markAsReady(order.id)">Listo</button>
-  </ul>
-
-</div>
+<section class="pending-orders-section">
+  <div class="title">Pedidos por preparar</div>
+  <div class="scroll-div">
+    <div class="orders-container" *ngFor="let order of pendingOrders">
+      <div class="pending-order">
+        <ul>
+          <li>Cliente: {{ order.client }} </li>
+          <li *ngFor="let product of order.products">
+            {{ product.product.name }}
+          </li>
+            <!-- buscar cómo indicar cuál mesa es -->
+          <li>Hora de Ingreso: {{ order.dateEntry }} </li>
+        </ul>
+        <button class="btn-ready" (click)="markAsReady(order.id)"></button>
+      </div>
+    </div>
+  </div>
+</section>

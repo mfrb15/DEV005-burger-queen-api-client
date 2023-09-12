@@ -1,9 +1,17 @@
-<p>orders-ready works!</p>
-<ul *ngFor="let order of ordersReady">
-  <li>
-    Cliente: {{ order.client }}
-    <!-- buscar cómo indicar cuál mesa es -->
-    Hora de Ingreso: {{ order.dateEntry }}
-    Estado del pedido:  {{ order.status }}
-  </li>
-</ul>
+<section class="ready-orders-section">
+  <div class="title">Pedidos listos para entregar</div>
+  <div class="scroll-div">
+    <div class="orders-container" *ngFor="let order of ordersReady">
+      <div class="order-ready">
+        <ul>
+          <li>Cliente: {{ order.client }} </li>
+          <li *ngFor="let product of order.products">
+            {{ product.product.name }}
+          </li>
+            <!-- buscar cómo indicar cuál mesa es -->
+          <li>Tiempo de preparación: {{ order.dateProcessed }} </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
