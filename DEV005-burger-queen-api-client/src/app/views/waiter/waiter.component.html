@@ -1,12 +1,16 @@
 <!-- PASO 4... AGREGAMOS EL EVENTO A LA ETIQUETA <app-orders></app-orders>
 el PASO 5 ESTA EN cook.HTML-->
 <app-logo [size]="'small'"></app-logo>
-<app-input-client [clientName]="clientName" [tableNumber]="tableNumber"    (nameChanged)="OnUpdateName($event)" (selectedTable)="onUpDateTableInOrder($event)"  ></app-input-client>
-<app-tab-bar [activeTabInTabComponent]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
-  <div class="divMenuAndOrder">
-    <div>
+<main>
+  <app-input-client [clientName]="clientName" [tableNumber]="tableNumber"    (nameChanged)="OnUpdateName($event)" (selectedTable)="onUpDateTableInOrder($event)"  ></app-input-client>
+  <app-tab-bar [activeTabInTabComponent]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
+    <div class="divMenuAndOrder">
       <app-menu [activeTabInMenu]="activeTab" (productAdded)="onProductClicked($event)"></app-menu>
+      <app-orders (orderCreated)="onOrderCreated($event)"  [tableNumber]="tableNumber" [clientName]="clientName" [productOrderList]="productOrderList"> </app-orders>
     </div>
-    <app-orders (orderCreated)="onOrderCreated($event)"  [tableNumber]="tableNumber" [clientName]="clientName" [productOrderList]="productOrderList"> </app-orders>
-  </div>
-</app-tab-bar>
+    <div>
+      <app-order-status></app-order-status>
+    </div>
+  </app-tab-bar>
+</main>
+
