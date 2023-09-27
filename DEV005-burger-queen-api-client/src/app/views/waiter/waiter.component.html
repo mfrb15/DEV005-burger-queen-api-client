@@ -4,13 +4,13 @@ el PASO 5 ESTA EN cook.HTML-->
 <main>
   <app-input-client [clientName]="clientName" [tableNumber]="tableNumber"    (nameChanged)="OnUpdateName($event)" (selectedTable)="onUpDateTableInOrder($event)"  ></app-input-client>
   <app-tab-bar [activeTabInTabComponent]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
-    <div class="divMenuAndOrder">
+    <section class="divMenuAndOrder">
       <app-menu [activeTabInMenu]="activeTab" (productAdded)="onProductClicked($event)"></app-menu>
       <app-orders (orderCreated)="onOrderCreated($event)"  [tableNumber]="tableNumber" [clientName]="clientName" [productOrderList]="productOrderList"> </app-orders>
-    </div>
-    <div>
+    </section>
+    <section class="div-order-status">
       <app-order-status></app-order-status>
-    </div>
+    </section>
   </app-tab-bar>
 </main>
 
