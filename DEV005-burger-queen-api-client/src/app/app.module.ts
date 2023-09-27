@@ -24,6 +24,7 @@ import { ButtonAddComponent } from './components/button-add/button-add.component
 import { ProductsOrderComponent } from './components/products-order/products-order.component';
 import { PendingOrdersComponent } from './components/pending-orders/pending-orders.component';
 import { OrdersReadyComponent } from './components/orders-ready/orders-ready.component';
+import { OrderStatusComponent } from './components/order-status/order-status.component';
 
 @NgModule({
   schemas: [
@@ -46,6 +47,7 @@ import { OrdersReadyComponent } from './components/orders-ready/orders-ready.com
     ProductsOrderComponent,
     PendingOrdersComponent,
     OrdersReadyComponent,
+    OrderStatusComponent,
   ],
   imports: [
     BrowserModule,
