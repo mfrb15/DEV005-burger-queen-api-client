@@ -4,7 +4,9 @@
     <tbody>
       <tr *ngFor="let order of ordersReady">
         <td> {{order.client}} </td>
-        <td>Listos</td>
+        <td>
+          <label for="order{{order.id}}">Listos</label>
+          <input type="checkbox" id="order{{order.id}}" class="image-checkbox"></td>
         <td>Entregados</td>
       </tr>
     </tbody>

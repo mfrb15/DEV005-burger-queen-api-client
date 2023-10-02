@@ -55,7 +55,7 @@ ul {
   background: none;
   border: none;
   padding: 0px;
-  background-image: url('../../../assets/images/ready.png');
+  background-image: url('../../../assets/images/unchecked.png');
   background-size: 40px 40px;
   background-repeat: no-repeat;
   background-position: center;
