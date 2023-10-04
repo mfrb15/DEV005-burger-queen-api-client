@@ -1,10 +1,9 @@
-<div class="product-div" *ngFor="let product of products; let i = index">
-  <div class="product-info">
-    <p class="product-name">{{ product.qty }} {{ product.product.name }}</p>
-    <p class="product-price">$ {{ product.product.price*product.qty }}</p>
-    <div class="divButton">
+<tr class="product-div" *ngFor="let product of products; let i = index">
+    <td class="product-qty">{{ product.qty }}</td>
+    <td class="product-name">{{ product.product.name }}</td>
+    <td class="product-price">$ {{ product.product.price*product.qty }}</td>
+    <td class="buttons">
       <app-button-add (click)="addToOrder(product)"></app-button-add>
       <app-button-sustract (click)="decrementProduct(i)"></app-button-sustract>
-    </div>
-  </div>
-</div>
+    </td>
+</tr>

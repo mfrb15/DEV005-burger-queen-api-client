@@ -4,10 +4,10 @@
   margin: 0px;
 }
 
-p {
-  font-size: 20px;
+td {
+  font-size: 22px;
+  line-height: 1;
 }
-
 
 .product-info {
   display: flex;
@@ -16,12 +16,17 @@ p {
   width: 100%;
 }
 
+
+.product-qty {
+  width: 3%;
+  align-self: center;
+}
+
 .product-name {
   flex: 1;
   white-space: wrap;
   /* Evita que el nombre del producto se parta en varias líneas */
   overflow: hidden;
-  font-size: 20px;
   text-overflow: ellipsis;
   /* Agrega puntos suspensivos si el nombre es demasiado largo */
   /* margin-left: 5%; */
@@ -30,13 +35,12 @@ p {
 
 .product-price {
   width: 20%;
-  font-size: 20px;
-  align-self: flex-start;
+  align-self: center;
 }
 
 
-.divButton {
-  width: 80px;
+.buttons {
+  width: 78px;
   display: flex;
   /* margin-left: 10px; */
 }
