@@ -5,7 +5,7 @@ el PASO 5 ESTA EN cook.HTML-->
   <section class="input-client">
     <app-input-client [clientName]="clientName" [tableNumber]="tableNumber"    (nameChanged)="OnUpdateName($event)" (selectedTable)="onUpDateTableInOrder($event)"></app-input-client>
   </section>
-  <section class="menu-section">
+  <section class="menu-order-section">
     <div class="menu-div">
       <app-tab-bar [activeTabInTabComponent]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
         <app-menu [activeTabInMenu]="activeTab" (productAdded)="onProductClicked($event)"></app-menu>
