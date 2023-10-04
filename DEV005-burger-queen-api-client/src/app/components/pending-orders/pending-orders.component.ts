@@ -34,12 +34,10 @@ export class PendingOrdersComponent implements OnInit {
   }
 
   markAsReady(id: number) {
-    console.log('Botón marcar pedido listo');
     const index = this.pendingOrders.findIndex(item => item.id === id);
     if (index !== -1) {
       this.ordersService.processOrder(id).subscribe((data) => {
         this.pendingOrders.splice(index, 1);
-        console.log(data);
         this.orderReady.emit(data);
       })
 

@@ -66,5 +66,17 @@ export class OrderProductService {
     );
   }
 
+  markReady(id: number): Observable<ProcessedOrder> {
+    const direction = this.apiUrl + `orders/${id}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('accesToken')}`,
+    });
+    const orderInfo = {
+      status: 'delivered',
+    }
+    const options = { headers: headers };
+    return this.http.patch<ProcessedOrder>(direction, orderInfo, options);
+  }
 }
 

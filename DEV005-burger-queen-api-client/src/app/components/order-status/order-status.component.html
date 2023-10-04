@@ -12,7 +12,7 @@
       <tr *ngFor="let order of ordersReady">
         <td> {{order.client}} </td>
         <td>
-          <input type="checkbox" id="order{{order.id}}" class="image-checkbox">
+          <input (click)="markOrderDelivered(order.id)" type="checkbox" id="order{{order.id}}" class="image-checkbox">
           <label for="order{{order.id}}"></label>
         </td>
         <td>Entregados</td>

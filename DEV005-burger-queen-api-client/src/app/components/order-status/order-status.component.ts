@@ -10,6 +10,7 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
 export class OrderStatusComponent implements OnInit {
 
   ordersReady: ProcessedOrder[] = [];
+  ordersDelivered: ProcessedOrder[] = [];
 
   constructor(private orderService: OrderProductService) {}
 
@@ -24,4 +25,11 @@ export class OrderStatusComponent implements OnInit {
     })
   }
 
+  markOrderDelivered(id: number) {
+    const index = this.ordersReady.findIndex(item => item.id === id);
+    if(index !== -1)
+    this.orderService.markReady(id).subscribe((data) => {
+      console.log(data);
+    })
+  }
 }
