@@ -2,15 +2,19 @@
 el PASO 5 ESTA EN cook.HTML-->
 <app-logo [size]="'small'"></app-logo>
 <main>
-  <app-input-client [clientName]="clientName" [tableNumber]="tableNumber"    (nameChanged)="OnUpdateName($event)" (selectedTable)="onUpDateTableInOrder($event)"  ></app-input-client>
-  <app-tab-bar [activeTabInTabComponent]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
-    <section class="divMenuAndOrder">
-      <app-menu [activeTabInMenu]="activeTab" (productAdded)="onProductClicked($event)"></app-menu>
+  <section class="input-client">
+    <app-input-client [clientName]="clientName" [tableNumber]="tableNumber"    (nameChanged)="OnUpdateName($event)" (selectedTable)="onUpDateTableInOrder($event)"></app-input-client>
+  </section>
+  <section class="menu-section">
+    <div class="menu-div">
+      <app-tab-bar [activeTabInTabComponent]="activeTab" [tabMenu]="tabMenu" (tabChange)="onTabChange($event)">
+        <app-menu [activeTabInMenu]="activeTab" (productAdded)="onProductClicked($event)"></app-menu>
+      </app-tab-bar>
+    </div>
+    <div class="order-div">
       <app-orders (orderCreated)="onOrderCreated($event)"  [tableNumber]="tableNumber" [clientName]="clientName" [productOrderList]="productOrderList"> </app-orders>
-    </section>
-    <section class="div-order-status">
       <app-order-status></app-order-status>
-    </section>
-  </app-tab-bar>
+    </div>
+  </section>
 </main>
 

@@ -5,11 +5,11 @@ main {
   justify-content: space-evenly;
 }
 
-main > .divMenuAndOrder:not(:last-child) {
+main > .menu-section:not(:last-child) {
   margin-right: 1rem;
 }
 
-.divMenuAndOrder {
+.menu-section {
   background-color: none;
   display: flex;
   justify-content: space-around;
@@ -17,6 +17,10 @@ main > .divMenuAndOrder:not(:last-child) {
   padding-top: 1rem;
 }
 
-.div-order-status {
+.order-div {
+  display: flex;
+  flex-direction: column;
   width: auto;
+  margin-top: 4.9rem;
+  gap:0.5rem;
 }
