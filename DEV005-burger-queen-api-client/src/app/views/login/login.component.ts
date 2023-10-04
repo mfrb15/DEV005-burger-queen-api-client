@@ -47,11 +47,9 @@ export class LoginComponent {
       if (typeof response === 'string') {
         this.incorrectCredentials = 'Credenciales Incorrectas';
       } else {
-        console.log(response);
         localStorage.setItem('accesToken', response.accessToken);
         localStorage.setItem('role', response.user.role);
         localStorage.setItem('id', response.user.id.toString());
-
         this.redirectByRole(response.user.role);
       }
     })

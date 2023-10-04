@@ -22,7 +22,6 @@ export class PendingOrdersComponent implements OnInit {
   addNewOrders() {
     this.ordersService.getOrders().subscribe((data) => {
       this.pendingOrders = data.filter(order => order.status === 'pending');
-      console.log(this.pendingOrders);
     });
   }
 

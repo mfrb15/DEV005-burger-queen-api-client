@@ -18,7 +18,6 @@ export class WaiterComponent {
   orders: NewOrder[] = [];
 
   onProductClicked(productInOrder: ProductInOrder) {
-    console.log('onProductClicked se está ejecutando', productInOrder);
     const index = this.productOrderList.findIndex(item => item.product.name === productInOrder.product.name);
     if (index !== -1) {
       this.productOrderList[index].qty = (this.productOrderList[index].qty + 1);

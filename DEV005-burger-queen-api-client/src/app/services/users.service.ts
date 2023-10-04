@@ -23,7 +23,6 @@ export class UserService {
 
   getId(): string | null {
     const id = localStorage.getItem('id');
-    console.log(id, 'VALOR DE ID');
     return id;
   }
 

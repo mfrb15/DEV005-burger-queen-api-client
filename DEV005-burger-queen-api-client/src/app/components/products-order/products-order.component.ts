@@ -13,7 +13,6 @@ export class ProductsOrderComponent {
   @Input() products: ProductInOrder[] = [];
 
   addToOrder(product: ProductInOrder) {
-    console.log(product);
     this.productAdded.emit(product);
   }
 
@@ -28,9 +27,6 @@ export class ProductsOrderComponent {
       this.removeProduct(index);
     }
   }
-
-
-
   // hacer una funcion que conecte el boton con este componente
 }
 

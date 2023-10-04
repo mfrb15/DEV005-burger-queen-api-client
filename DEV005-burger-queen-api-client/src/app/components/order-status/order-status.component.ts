@@ -21,7 +21,6 @@ export class OrderStatusComponent implements OnInit {
   getOrderReady() {
     this.orderService.getOrdersReady().subscribe((data) => {
       this.ordersReady = data.filter(order => order.status === 'ready');
-      console.log(this.ordersReady);
     })
   }
 
