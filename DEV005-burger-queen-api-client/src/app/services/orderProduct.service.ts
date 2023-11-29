@@ -9,7 +9,7 @@ import { NewOrder, ProcessedOrder, RPOrder, ResponseOrder } from '../models/prod
 })
 export class OrderProductService {
   private apiUrl = 'http://127.0.0.1:8080/';
-  private pollingInterval = 20000;
+  private pollingInterval = 200000000000;
 
   constructor(private http: HttpClient) { }
   // Get order
