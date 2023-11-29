@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .login-main {
@@ -19,25 +19,23 @@
 }
 
 .inputForm {
-  border-radius: 20px;
+  border-radius: 15px;
   border: 1px solid #000;
   background: #FFFCFB;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  width: 40rem;
-  height: 5rem;
+  width: 30rem;
+  height: 4rem;
   flex-shrink: 0;
-  font-size: 30px;
+  font-size: 1.5rem;
   margin-bottom: 2rem;
 }
 
 .labelForm {
   color: #005A96;
-  font-size: 40px;
+  font-size: 1.5rem;
+  font-weight: 600;
   font-style: normal;
-  font-weight: 400;
   line-height: normal;
-  width: 459px;
-  height: 51px;
   flex-shrink: 0;
 }
 
@@ -52,7 +50,7 @@
   width: 411.839px;
   height: 70.736px;
   flex-shrink: 0;
-  border-radius: 31.438px;
+  border-radius: 20px;
   background: #005A96;
   font-size: 40px;
   font-style: normal;
