@@ -7,11 +7,11 @@
     <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
       <div class="inputContainer">
         <label for="email" class="labelForm form-element">Correo</label>
-        <input type="email" id="email" class="inputForm form-element" formControlName="email" required placeholder="correo@example.com">
+        <input type="email" id="email" class="inputForm form-element" formControlName="email" required placeholder="Correo demo: waiter@bq.com">
         <div class="requiredCamp" *ngIf="showPasswordMessage()"> El correo es requerido </div>
 
         <label for="password" class="labelForm form-element">Contraseña</label>
-        <input type="password" id="password" class="inputForm form-element" formControlName="password" required placeholder="Ingrese su contraseña">
+        <input type="password" id="password" class="inputForm form-element" formControlName="password" required placeholder="Contraseña demo: 123456">
         <div class="requiredCamp" *ngIf="showPasswordMessage()"> La contraseña es requerida </div>
 
         <div class="requiredCamp" *ngIf="incorrectCredentials"> {{incorrectCredentials}} </div>
