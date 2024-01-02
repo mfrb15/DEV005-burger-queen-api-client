@@ -6,6 +6,16 @@
   justify-items: center;
   align-items: center;
   padding: 10px;
+  width: 415px;
+}
+
+table {
+  width: 415px;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
 }
 
 caption {

@@ -9,7 +9,7 @@ import { NewOrder, ProcessedOrder, RPOrder, ResponseOrder } from '../models/prod
 })
 export class OrderProductService {
   private apiUrl = 'http://127.0.0.1:8080/';
-  private pollingInterval = 20000;
+  private pollingInterval = 200000000000;
 
   constructor(private http: HttpClient) { }
   // Get order
@@ -66,5 +66,17 @@ export class OrderProductService {
     );
   }
 
+  markReady(id: number): Observable<ProcessedOrder> {
+    const direction = this.apiUrl + `orders/${id}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('accesToken')}`,
+    });
+    const orderInfo = {
+      status: 'delivered',
+    }
+    const options = { headers: headers };
+    return this.http.patch<ProcessedOrder>(direction, orderInfo, options);
+  }
 }
 

@@ -1,6 +1,6 @@
 .tab-barContainer {
   display: flex;
-  width: 25rem;
+  /* width: 25rem; */
   margin-left: 3%;
   justify-content: center;
   /* background-color: blue; */
@@ -15,7 +15,7 @@
 .tab-button {
   position: relative;
   width: 50%;
-  width: auto;
+  /* width: auto; */
   color: #7a7976;
   text-align: left;
   font-size: 30px;

@@ -22,7 +22,6 @@ export class PendingOrdersComponent implements OnInit {
   addNewOrders() {
     this.ordersService.getOrders().subscribe((data) => {
       this.pendingOrders = data.filter(order => order.status === 'pending');
-      console.log(this.pendingOrders);
     });
   }
 
@@ -34,12 +33,10 @@ export class PendingOrdersComponent implements OnInit {
   }
 
   markAsReady(id: number) {
-    console.log('Botón marcar pedido listo');
     const index = this.pendingOrders.findIndex(item => item.id === id);
     if (index !== -1) {
       this.ordersService.processOrder(id).subscribe((data) => {
         this.pendingOrders.splice(index, 1);
-        console.log(data);
         this.orderReady.emit(data);
       })
 

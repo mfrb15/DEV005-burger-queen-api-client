@@ -33,11 +33,9 @@ export class OrdersComponent {
     };
     if (this.clientName.trim() === '' || this.productOrderList.length === 0) {
       this.showError = true;
-      console.log('El campo esta vacio');
     } else {
       this.showError = false;
       this.ordersService.postOrder(newOrder).subscribe((data) => {
-        console.log(data, 'soy ese console');
         this.orderCreated.emit(data);
         this.clearInputs();
         this.cdr.detectChanges();

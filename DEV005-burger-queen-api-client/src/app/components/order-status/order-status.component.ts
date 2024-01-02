@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProcessedOrder } from 'src/app/models/products.interface';
 import { OrderProductService } from 'src/app/services/orderProduct.service';
-
 @Component({
   selector: 'app-order-status',
   templateUrl: './order-status.component.html',
@@ -9,7 +8,7 @@ import { OrderProductService } from 'src/app/services/orderProduct.service';
 })
 export class OrderStatusComponent implements OnInit {
 
-  ordersReady: ProcessedOrder[] = [];
+  orders: ProcessedOrder[] = [];
 
   constructor(private orderService: OrderProductService) {}
 
@@ -19,9 +18,21 @@ export class OrderStatusComponent implements OnInit {
 
   getOrderReady() {
     this.orderService.getOrdersReady().subscribe((data) => {
-      this.ordersReady = data.filter(order => order.status === 'ready');
-      console.log(this.ordersReady);
+      this.orders = data;
+    });
+  }
+
+  markOrderDelivered(id: number) {
+    const index = this.orders.findIndex(item => item.id === id);
+    if(index !== -1)
+    this.orderService.markReady(id).subscribe((data) => {
+      console.log(data);
     })
   }
 
+  // getOrdersDelivered() {
+  //   this.orderService.getOrdersReady().subscribe((data) => {
+  //     this.ordersDelivered = data.filter(order => order.status === 'delivered');
+  //   })
+  // }
 }
